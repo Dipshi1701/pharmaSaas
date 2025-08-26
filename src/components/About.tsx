@@ -61,7 +61,7 @@ const About = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                For over 25 years, PharmaCorp has been at the forefront of pharmaceutical innovation, 
+                For over 25 years, PharmaSaas has been at the forefront of pharmaceutical innovation, 
                 developing life-changing medicines that improve patient outcomes worldwide. Our commitment 
                 to scientific excellence and patient care drives everything we do.
               </motion.p>

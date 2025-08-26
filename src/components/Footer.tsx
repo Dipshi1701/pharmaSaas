@@ -106,7 +106,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">P</span>
               </div>
-              <span className="text-2xl font-bold">PharmaCorp</span>
+              <span className="text-2xl font-bold">PharmaSaas</span>
             </div>
             
             <p className="text-background/70 mb-8 leading-relaxed">
@@ -117,7 +117,7 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-accent" />
-                <span className="text-background/70">contact@pharmacorp.com</span>
+                <span className="text-background/70">contact@pharmasaas.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-accent" />
@@ -168,7 +168,7 @@ const Footer = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              © 2024 PharmaCorp. All rights reserved. | Privacy Policy | Terms of Service
+              © 2024 PharmaSaas. All rights reserved. | Privacy Policy | Terms of Service
             </motion.div>
             
             <motion.div 

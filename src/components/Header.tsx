@@ -38,7 +38,7 @@ const Header = () => {
               <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">P</span>
               </div>
-              <span className="text-2xl font-bold text-foreground">PharmaCorp</span>
+              <span className="text-2xl font-bold text-foreground">PharmaSaas</span>
             </Link>
           </motion.div>
 
