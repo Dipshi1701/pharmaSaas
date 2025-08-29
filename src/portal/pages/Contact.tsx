@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+ 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -56,7 +55,6 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-20">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-hero">
@@ -128,7 +126,7 @@ const Contact = () => {
                         </SelectTrigger>
                         <SelectContent>
                           {contactReasons.map((reason) => (
-                            <SelectItem key={reason} value={reason.toLowerCase().replace(/\s+/g, '-')}>
+                            <SelectItem key={reason} value={reason.toLowerCase().replace(/\s+/g, '-')}>\
                               {reason}
                             </SelectItem>
                           ))}
@@ -269,9 +267,11 @@ const Contact = () => {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 };
 
 export default Contact;
+
+
+

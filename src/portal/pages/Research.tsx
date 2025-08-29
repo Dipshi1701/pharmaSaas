@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+ 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -137,7 +136,6 @@ const Research = () => {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-20">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-hero">
@@ -395,9 +393,10 @@ const Research = () => {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 };
 
 export default Research;
+
+

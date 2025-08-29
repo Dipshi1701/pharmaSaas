@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+ 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -73,7 +72,6 @@ const Services = () => {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-20">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-hero">
@@ -210,9 +208,11 @@ const Services = () => {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 };
 
 export default Services;
+
+
+
