@@ -1,15 +1,26 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Menu, X, Search } from 'lucide-react';
 import SearchResults from './SearchResults';
+import { isAuthenticated, getSession, signOut } from '@/auth/session';
+import { toast } from '@/components/ui/sonner';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+  const authed = isAuthenticated();
+  const session = getSession();
+
+  const handleLogout = () => {
+    signOut();
+    toast("You have logged out.");
+    navigate('/login', { replace: true });
+  };
 
   const navItems = [
     { name: 'Home', href: '/' },
@@ -62,7 +73,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Search & CTA */}
+          {/* Search & Auth CTA */}
           <div className="hidden md:flex items-center space-x-4">
             {/* Search */}
             <motion.div 
@@ -105,15 +116,24 @@ const Header = () => {
               <SearchResults query={searchQuery} isVisible={isSearchOpen && searchQuery.length > 0} />
             </motion.div>
 
-            {/* CTA Button */}
+            {/* Auth */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8 }}
             >
-              <Button variant="default" className="bg-gradient-primary hover:shadow-medium transition-all duration-300">
-                Get Started
-              </Button>
+              {authed ? (
+                <div className="flex items-center gap-3">
+                  <span className="text-sm text-muted-foreground">Hi, {session?.username}</span>
+                  <Button variant="outline" onClick={handleLogout}>Logout</Button>
+                </div>
+              ) : (
+                <Link to="/login">
+                  <Button variant="default" className="bg-gradient-primary hover:shadow-medium transition-all duration-300">
+                    Login
+                  </Button>
+                </Link>
+              )}
             </motion.div>
           </div>
 
@@ -174,9 +194,15 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button variant="default" className="bg-gradient-primary mt-4 w-fit">
-                Get Started
-              </Button>
+              {authed ? (
+                <Button variant="outline" className="mt-4 w-fit" onClick={() => { setIsMenuOpen(false); handleLogout(); }}>
+                  Logout
+                </Button>
+              ) : (
+                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="w-fit">
+                  <Button variant="default" className="bg-gradient-primary mt-4 w-fit">Login</Button>
+                </Link>
+              )}
             </div>
           </motion.nav>
         )}

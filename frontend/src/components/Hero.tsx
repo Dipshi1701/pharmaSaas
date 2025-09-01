@@ -89,7 +89,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="relative z-10">
+            <div className="relative">
               <img 
                 src={heroImage} 
                 alt="Modern pharmaceutical laboratory with advanced medical equipment"
