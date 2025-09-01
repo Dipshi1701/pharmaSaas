@@ -5,7 +5,7 @@ import heroImage from '@/assets/pharma-hero.jpg';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 bg-gradient-hero">
+    <section id="home" className="relative min-h-screen flex items-center pt-20 bg-gradient-hero overflow-hidden">
       <div className="container mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
@@ -84,7 +84,7 @@ const Hero = () => {
 
           {/* Image */}
           <motion.div 
-            className="relative"
+            className="relative overflow-hidden"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
