@@ -10,7 +10,7 @@ import Research from "./pages/Research";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Login from "@/auth/Login";
-import Chatbot from "@/components/Chatbot";
+// import Chatbot from "@/components/Chatbot";
 
 const queryClient = new QueryClient();
 
@@ -30,8 +30,8 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        {/* Chatbot is available on all pages */}
-        <Chatbot />
+        {/* Chatbot temporarily disabled */}
+        {/** <Chatbot /> */}
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

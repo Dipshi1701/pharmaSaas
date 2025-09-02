@@ -1,11 +1,57 @@
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play } from 'lucide-react';
 import heroImage from '@/assets/pharma-hero.jpg';
 
 const Hero = () => {
+  const monologueLines = [
+    'Pioneering discovery from molecule to medicine.',
+    'Translating research into therapies that transform lives.',
+    'Ensuring quality, safety, and access at global scale.',
+  ];
+
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const currentLine = monologueLines[currentLineIndex];
+
+    if (isPaused) return;
+
+    const atLineEnd = !isDeleting && currentCharIndex === currentLine.length;
+    const atLineStart = isDeleting && currentCharIndex === 0;
+    const speedMs = isDeleting ? 25 : 50;
+
+    const timer = setTimeout(() => {
+      if (atLineEnd) {
+        setIsPaused(true);
+        setTimeout(() => {
+          setIsDeleting(true);
+          setIsPaused(false);
+        }, 900);
+        return;
+      }
+
+      if (atLineStart) {
+        setIsDeleting(false);
+        setCurrentLineIndex((prev) => (prev + 1) % monologueLines.length);
+        return;
+      }
+
+      const nextCharIndex = currentCharIndex + (isDeleting ? -1 : 1);
+      setCurrentCharIndex(nextCharIndex);
+      setDisplayedText(currentLine.slice(0, nextCharIndex));
+    }, speedMs);
+
+    return () => clearTimeout(timer);
+  }, [currentCharIndex, isDeleting, isPaused, currentLineIndex, monologueLines]);
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-20 bg-gradient-hero overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center bg-gradient-hero overflow-hidden">
       <div className="container mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
@@ -32,8 +78,8 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Leading pharmaceutical research and development with cutting-edge solutions 
-              that improve lives worldwide through innovative medicine and healthcare technology.
+              {displayedText}
+              <span className="border-r-2 border-primary ml-1 align-middle" style={{ animation: 'blink 1s steps(2, start) infinite' }} />
             </motion.p>
 
             <motion.div 
