@@ -1,9 +1,14 @@
-# PharmaSaas Project
+# PharmaSaaS
 
-## Project info
+Modern pharma-focused SaaS starter built with React, TypeScript, Vite, Tailwind, and shadcn-ui.
 
-This is the official repository for the PharmaSaas project, a leading pharmaceutical research and development platform.
-**Version**: 0.0.0
+Key features implemented:
+- Authentication with local session storage
+- Protected routing with a reusable `ProtectedOutlet`
+- Login-first flow (root `/` shows login, then routes require auth)
+- Responsive dashboard with Recharts (line, bar, pie)
+- Home page hero with typewriter monologue, marquee banner, and card carousel
+- Framer Motion animations on KPIs and hero
 
 ## Getting Started
 
@@ -37,6 +42,34 @@ npm i # Or 'yarn install' or 'bun install'
 npm run dev # Or 'yarn dev' or 'bun dev'
 ```
 
+## Authentication & Routing
+
+- Session helpers live in `src/auth/session.ts`.
+- Guard routes using `src/auth/ProtectedOutlet.tsx`.
+- Current routing (`src/App.tsx`):
+  - Public: `/login`
+  - Protected group: `/dashboard`, `/about`, `/services`, `/research`, `/contact`
+  - Root `/` shows `Login` (redirects to `/dashboard` after sign-in).
+
+To protect more routes, place them inside the protected `<Route element={<ProtectedOutlet />}>...</Route>` group.
+
+## Pages & Components
+
+- `src/pages/Dashboard.tsx`: Responsive charts with Recharts and animated KPI cards.
+- `src/components/PharmaBanner.tsx`: Moving pharma marquee banner.
+- `src/components/HomeCarousel.tsx`: 3-up card carousel with dots; 10 slides grouped in threes.
+- `src/components/Hero.tsx`: Hero with typewriter monologue.
+
+## Styling & UI
+
+- Tailwind CSS with shadcn-ui components under `src/components/ui/*`.
+- Framer Motion used for subtle hover/enter animations.
+
+## Development Notes
+
+- Chatbot is currently disabled in `src/App.tsx` (commented import and JSX).
+- Colors and theme tokens are in `src/index.css` and component variables.
+
 **Edit a file directly in GitHub**
 
 - Navigate to the desired file(s).
@@ -63,7 +96,12 @@ This project is built with:
 
 ## Deployment
 
-Deployment instructions will be added here.
+Build and preview:
+
+```sh
+npm run build
+npm run preview
+```
 
 ## Custom Domain
 
@@ -71,4 +109,4 @@ Custom domain connection instructions will be added here.
 
 ## Styling and Theming
 
-This project uses Tailwind CSS, and the primary colors are defined using CSS variables in `src/index.css`. We can customize the application's primary color by modifying the `--primary` and `--primary-foreground` HSL values within the `:root` and `.dark` blocks in `src/index.css`. The primary color has been recently updated to a modern pharma-like green.
+Primary colors are CSS variables in `src/index.css`. Update `--primary` and `--primary-foreground` in `:root`/`.dark` to re-theme.

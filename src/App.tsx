@@ -10,7 +10,10 @@ import Research from "./pages/Research";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Login from "@/auth/Login";
-// import Chatbot from "@/components/Chatbot";
+import Dashboard from "./pages/Dashboard";
+import ProtectedOutlet from "@/auth/ProtectedOutlet";
+
+
 
 const queryClient = new QueryClient();
 
@@ -21,17 +24,19 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/research" element={<Research />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route element={<ProtectedOutlet />}>
+            <Route path="/" element={<Index />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/research" element={<Research />} />
+            <Route path="/contact" element={<Contact />} />
+          </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        {/* Chatbot temporarily disabled */}
-        {/** <Chatbot /> */}
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

@@ -6,7 +6,8 @@ import Footer from '@/components/Footer'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { isAuthenticated, signIn } from '@/auth/session'
+import { isAuthenticated } from '@/auth/session'
+import { login as authLogin } from '@/services/authService'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -14,6 +15,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [role, setRole] = useState<'frontend' | 'backend'>('frontend')
 
   if (isAuthenticated()) {
     return <Navigate to="/" replace />
@@ -28,8 +30,16 @@ const Login = () => {
     }
     try {
       setLoading(true)
-      await signIn(username, password)
-      navigate('/', { replace: true })
+      const { token } = await authLogin(username, password, role)
+
+      if (role === 'frontend') {
+        localStorage.setItem('pharmaSaas:auth', JSON.stringify({ token, role: 'frontend' }))
+        navigate('/dashboard', { replace: true })
+      } else if (role === 'backend') {
+        window.location.href = `http://localhost:5000/admin?token=${encodeURIComponent(token)}`;
+      } else {
+        throw new Error('Unknown role')
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Login failed')
     } finally {
@@ -48,8 +58,20 @@ const Login = () => {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-sm mb-2">Username</label>
-                  <Input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="jane.doe" />
+                  <label className="block text-sm mb-2">Role</label>
+                  <select
+                    className="w-full h-10 px-3 py-2 border rounded-md bg-background text-base focus:outline-none focus:ring-2 focus:ring-primary"
+                    value={role}
+                    onChange={e => setRole(e.target.value as 'frontend' | 'backend')}
+                    disabled={loading}
+                  >
+                    <option value="frontend">Frontend</option>
+                    <option value="backend">Backend</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm mb-2">Email</label>
+                  <Input type="email" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="jane@company.com" />
                 </div>
                 <div>
                   <label className="block text-sm mb-2">Password</label>
