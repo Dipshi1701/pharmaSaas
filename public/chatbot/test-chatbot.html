@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Test - Local Preview</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8fafc;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .test-header {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .test-content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            🧪 Chatbot CSS Test - Local Preview
+        </div>
+        <div class="test-content">
+            <p>This is a test page to preview your chatbot styling changes locally.</p>
+            <p>Below you can see how the chatbot elements will look:</p>
+            
+            <!-- Mock Chatbot Structure -->
+            <div class="inbenta">
+                <div class="inbenta-bot__chat">
+                    <div class="inbenta-bot__chat__header">
+                        <div class="header__title">
+                            AI Agent
+                        </div>
+                        <div class="header__actions">
+                            <button class="header__actions__icon header__actions__icon--close"></button>
+                            <button class="header__actions__icon header__actions__icon--minimize"></button>
+                            <button class="header__actions__icon header__actions__icon--reset-session"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="inbenta-bot__chat__body">
+                        <div class="body__wrapper">
+                            <div class="body__wrapper__empty"></div>
+                            <div class="body__wrapper__messages">
+                                <div class="messages__message messages__message--received">
+                                    <div class="messages__message__avatar">
+                                        <span class="inbenta-bot-icon inbenta-bot-icon--avatar"></span>
+                                        <div class="avatar__light"></div>
+                                    </div>
+                                    <div class="messages__message__content">
+                                        <div class="content__wrapper">
+                                            <div class="content__wrapper__contents">
+                                                <span class="content__label"></span>
+                                                <span class="content__text">
+                                                    <div>
+                                                        <p>Hello! Welcome to Moderna's support chat. I'm your virtual assistant.</p>
+                                                    </div>
+                                                </span>
+                                                <!---->
+                                            </div>
+                                            <!---->
+                                        </div>
+                                        <!---->
+                                    </div>
+                                </div>
+                                <div class="messages__message messages__message--received">
+                                    <div class="messages__message__avatar">
+                                        <span class="inbenta-bot-icon inbenta-bot-icon--avatar"></span>
+                                        <div class="avatar__light"></div>
+                                    </div>
+                                    <div class="messages__message__content">
+                                        <div class="content__wrapper">
+                                            <div class="content__wrapper__contents">
+                                                <span class="content__label"></span>
+                                                <span class="content__text content__text--info content__text--multiple-choice-intro-text">
+                                                    <p>In order to assist better, are you a Patient or HCP?</p>
+                                                </span>
+                                                <div class="content__buttons-wrapper">
+                                                    <div class="content__buttons content__buttons--multiple-choise">
+                                                        <button class="inbenta-bot-button" data-role="patient">
+                                                            <span class="inbenta-bot-icon inbenta-bot-icon--faq-icon"></span>
+                                                            <span>Patient</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="content__buttons content__buttons--multiple-choise">
+                                                        <button class="inbenta-bot-button" data-role="hcp">
+                                                            <span class="inbenta-bot-icon inbenta-bot-icon--faq-icon"></span>
+                                                            <span>HCP</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!---->
+                                            </div>
+                                            <!---->
+                                        </div>
+                                        <!---->
+                                    </div>
+                                </div>
+                                
+                                <!-- User Message 1 -->
+                                <div class="messages__message messages__message--sent">
+                                    <div class="messages__message__avatar">
+                                        <span class="inbenta-bot-icon"></span>
+                                        <div class="avatar__light"></div>
+                                    </div>
+                                    <div class="messages__message__content">
+                                        <div class="content__wrapper">
+                                            <div class="content__wrapper__contents">
+                                                <span class="content__label">You</span>
+                                                <span class="content__text">
+                                                    <div>HCP</div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- User Message 2 -->
+                                <div class="messages__message messages__message--sent">
+                                    <div class="messages__message__avatar">
+                                        <span class="inbenta-bot-icon"></span>
+                                        <div class="avatar__light"></div>
+                                    </div>
+                                    <div class="messages__message__content">
+                                        <div class="content__wrapper">
+                                            <div class="content__wrapper__contents">
+                                                <span class="content__label">You</span>
+                                                <span class="content__text">
+                                                    <div>I'm a patient</div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="inbenta-bot__chat__footer">
+                        <div class="footer__form">
+                            <input type="text" class="footer__form__input" placeholder="Enter your question">
+                            <button class="footer__form__button">
+                                <span class="inbenta-bot-icon inbenta-bot-icon--send"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Launcher Button -->
+                <!-- <div class="inbenta-bot__launcher">
+                    <span class="inbenta-bot__launcher__image"></span>
+                    Need Help?
+                </div> -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Add some interactivity for testing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Test button clicks
+            const buttons = document.querySelectorAll('.inbenta-bot-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    console.log('Button clicked:', this.textContent.trim());
+                    this.style.opacity = '0.7';
+                    setTimeout(() => {
+                        this.style.opacity = '1';
+                    }, 200);
+                });
+            });
+            
+            // Test launcher hover
+            const launcher = document.querySelector('.inbenta-bot__launcher');
+            if (launcher) {
+                launcher.addEventListener('click', function() {
+                    console.log('Launcher clicked');
+                });
+            }
+            
+            // Test send button
+            const sendButton = document.querySelector('.footer__form__button');
+            const input = document.querySelector('.footer__form__input');
+            
+            if (sendButton && input) {
+                sendButton.addEventListener('click', function() {
+                    if (input.value.trim()) {
+                        console.log('Sending message:', input.value);
+                        input.value = '';
+                    }
+                });
+                
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendButton.click();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

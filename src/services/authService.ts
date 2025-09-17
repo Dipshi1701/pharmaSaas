@@ -23,5 +23,31 @@ export async function login(
   if (!data?.token) {
     throw new Error("Malformed response");
   }
+  
   return { token: data.token };
 }
+
+/**
+ * Logout function - destroys chatbot and clears auth
+ */
+export function logout(): void {
+  try {
+    // Chatbot is loaded directly from index.html
+    
+    // Clear auth data
+    localStorage.removeItem('pharmaSaas:auth');
+    sessionStorage.clear();
+    
+    console.log('✅ User logged out successfully');
+  } catch (error) {
+    console.error('❌ Error during logout:', error);
+  }
+}
+
+// Default export for the service
+const authService = {
+  login,
+  logout
+};
+
+export default authService;

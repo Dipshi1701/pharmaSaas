@@ -1,24 +1,59 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Menu, X, Search } from 'lucide-react';
 import SearchResults from './SearchResults';
-import { isAuthenticated, getSession, signOut } from '@/auth/session';
-import { toast } from '@/components/ui/sonner';
+import { isAuthenticated, getSession, signOut, Session } from '@/auth/session';
+// import { toast } from '@/components/ui/sonner'; // Removed sonner
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [authed, setAuthed] = useState(false);
+  const [session, setSession] = useState<Session | null>(null);
   const navigate = useNavigate();
-  const authed = isAuthenticated();
-  const session = getSession();
+  const location = useLocation();
+
+  // Update authentication state when location changes
+  useEffect(() => {
+    const updateAuthState = () => {
+      const authStatus = isAuthenticated();
+      const sessionData = getSession();
+      console.log('Header: Updating auth state:', { authStatus, sessionData });
+      setAuthed(authStatus);
+      setSession(sessionData);
+    };
+
+    updateAuthState();
+    
+    // Listen for storage changes to update auth state
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'pharmaSaas:auth') {
+        updateAuthState();
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    
+    // Also check auth state on focus (when user comes back to tab)
+    const handleFocus = () => {
+      updateAuthState();
+    };
+    
+    window.addEventListener('focus', handleFocus);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, [location.pathname]);
 
   const handleLogout = () => {
     signOut();
-    toast("You have logged out.");
+    console.log("You have logged out.");
     navigate('/login', { replace: true });
   };
 

@@ -1,112 +1,328 @@
-# PharmaSaaS
+# PharmaSaas Frontend
 
-Modern pharma-focused SaaS starter built with React, TypeScript, Vite, Tailwind, and shadcn-ui.
+A modern React-based frontend for the PharmaSaas pharmaceutical research and development platform, built with TypeScript, Vite, and Tailwind CSS.
 
-Key features implemented:
-- Authentication with local session storage
-- Protected routing with a reusable `ProtectedOutlet`
-- Login-first flow (root `/` shows login, then routes require auth)
-- Responsive dashboard with Recharts (line, bar, pie)
-- Home page hero with typewriter monologue, marquee banner, and card carousel
-- Framer Motion animations on KPIs and hero
+## 🚀 Quick Start
 
-## Getting Started
+### Prerequisites
+- **Node.js** (v18 or higher)
+- **npm** or **yarn**
 
-There are several ways of interacting with your application's codebase.
+### Installation
+```bash
+# Install dependencies
+npm install
 
-**Use this repository**
-
-This repository contains the full source code for the PharmaSaas application.
-
-**Use your preferred IDE (Local Development)**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes.
-
-**Prerequisites**:
-
-- Node.js (v18 or higher) & npm (or yarn/bun) installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-**Installation Steps**:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i # Or 'yarn install' or 'bun install'
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev # Or 'yarn dev' or 'bun dev'
+# Start development server
+npm run dev
 ```
 
-## Authentication & Routing
+The application will be available at: `http://localhost:8080`
 
-- Session helpers live in `src/auth/session.ts`.
-- Guard routes using `src/auth/ProtectedOutlet.tsx`.
-- Current routing (`src/App.tsx`):
-  - Public: `/login`
-  - Protected group: `/dashboard`, `/about`, `/services`, `/research`, `/contact`
-  - Root `/` shows `Login` (redirects to `/dashboard` after sign-in).
+## 📋 Available Scripts
 
-To protect more routes, place them inside the protected `<Route element={<ProtectedOutlet />}>...</Route>` group.
+```bash
+# Development
+npm run dev              # Start development server (localhost:8080)
 
-## Pages & Components
+# Building
+npm run build            # Build for production
+npm run build:dev        # Build for development
+npm run build:staging    # Build for staging
+npm run build:prod       # Build for production (same as build)
 
-- `src/pages/Dashboard.tsx`: Responsive charts with Recharts and animated KPI cards.
-- `src/components/PharmaBanner.tsx`: Moving pharma marquee banner.
-- `src/components/HomeCarousel.tsx`: 3-up card carousel with dots; 10 slides grouped in threes.
-- `src/components/Hero.tsx`: Hero with typewriter monologue.
+# Analysis
+npm run build:analyze    # Build and analyze bundle size
 
-## Styling & UI
+# Code Quality
+npm run lint             # Run ESLint
+npm run preview          # Preview production build
+```
 
-- Tailwind CSS with shadcn-ui components under `src/components/ui/*`.
-- Framer Motion used for subtle hover/enter animations.
+## 🏗️ Project Structure
 
-## Development Notes
+```
+pharmaSaas-frontend/
+├── public/                 # Static assets
+│   ├── chatbot/           # Chatbot styling and configuration
+│   │   ├── style.css      # Custom chatbot styles
+│   │   └── inbenta-chatbot-style.css
+│   ├── inbenta-chatbot.js # Chatbot integration
+│   ├── favicon.ico
+│   └── robots.txt
+├── src/                   # Source code
+│   ├── auth/             # Authentication components
+│   │   ├── Login.tsx     # Login page
+│   │   ├── ProtectedOutlet.tsx # Route protection
+│   │   └── session.ts    # Session management
+│   ├── components/       # Reusable components
+│   │   ├── ui/          # shadcn/ui components
+│   │   ├── Header.tsx   # Site header
+│   │   ├── Footer.tsx   # Site footer
+│   │   ├── Hero.tsx     # Hero section
+│   │   └── ...
+│   ├── pages/           # Page components
+│   │   ├── Index.tsx    # Home page
+│   │   ├── About.tsx    # About page
+│   │   ├── Dashboard.tsx # User dashboard
+│   │   ├── Login.tsx    # Login page
+│   │   └── ...
+│   ├── services/        # API services
+│   │   ├── authService.ts # Authentication API
+│   │   ├── dashboardService.ts # Dashboard API
+│   │   └── index.ts     # Service exports
+│   ├── hooks/           # Custom React hooks
+│   ├── lib/             # Utility functions
+│   ├── assets/          # Images and static assets
+│   ├── App.tsx          # Main app component
+│   ├── main.tsx         # App entry point
+│   └── index.css        # Global styles
+├── dist/                # Built files (generated)
+├── package.json         # Dependencies and scripts
+├── vite.config.ts       # Vite configuration
+├── tailwind.config.ts   # Tailwind CSS configuration
+└── tsconfig.json        # TypeScript configuration
+```
 
-- Chatbot is currently disabled in `src/App.tsx` (commented import and JSX).
-- Colors and theme tokens are in `src/index.css` and component variables.
+## 🎨 Technology Stack
 
-**Edit a file directly in GitHub**
+### Core Technologies
+- **React 18** - UI framework with hooks and concurrent features
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### UI Components
+- **Radix UI** - Unstyled, accessible UI primitives
+- **shadcn/ui** - Beautiful, accessible components built with Radix UI
+- **Lucide React** - Beautiful & consistent icon toolkit
+- **Framer Motion** - Production-ready motion library
 
-**Use GitHub Codespaces**
+### Routing & State
+- **React Router DOM** - Declarative routing for React
+- **React Hook Form** - Performant, flexible forms with easy validation
+- **Zod** - TypeScript-first schema validation
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Data Visualization
+- **Recharts** - Composable charting library built on React and D3
+- **TanStack Query** - Powerful data synchronization for React
 
-## What technologies are used for this project?
+### Development Tools
+- **ESLint** - Code linting and formatting
+- **PostCSS** - CSS processing
+- **Autoprefixer** - CSS vendor prefixing
 
-This project is built with:
+## 🎯 Key Features
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Authentication System
+- **JWT-based authentication** with secure token handling
+- **Protected routes** that require authentication
+- **Session management** with automatic token refresh
+- **Login/logout functionality** with proper state management
 
-## Deployment
+### Responsive Design
+- **Mobile-first approach** with Tailwind CSS
+- **Responsive breakpoints** for all screen sizes
+- **Touch-friendly interface** for mobile devices
+- **Accessible design** following WCAG guidelines
 
-Build and preview:
+### Component Library
+- **50+ reusable components** built with shadcn/ui
+- **Consistent design system** with Tailwind CSS
+- **Accessible components** with proper ARIA attributes
+- **Customizable themes** and styling
 
-```sh
+### Chatbot Integration
+- **AI-powered healthcare assistant** using Inbenta platform
+- **Custom styling** to match the application design
+- **Responsive chatbot** that works on all devices
+- **Error handling** and fallback mechanisms
+
+## 🔧 Configuration
+
+### Environment Variables
+Create a `.env.local` file for local development:
+```env
+VITE_API_URL=http://localhost:5000
+VITE_APP_NAME=PharmaSaas
+```
+
+### Vite Configuration
+The `vite.config.ts` file includes:
+- **React plugin** with SWC for fast compilation
+- **Path aliases** for clean imports (`@/` for src)
+- **Build optimization** with manual chunk splitting
+- **Asset optimization** with proper file naming
+
+### Tailwind Configuration
+The `tailwind.config.ts` includes:
+- **Custom color palette** for the pharmaceutical theme
+- **Extended spacing** and typography
+- **Component-specific utilities**
+- **Dark mode support** (if needed)
+
+## 🚀 Development Workflow
+
+### 1. Starting Development
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+### 2. Making Changes
+- Edit files in the `src/` directory
+- Changes are automatically reflected in the browser
+- Use TypeScript for type safety
+- Follow the existing component patterns
+
+### 3. Building for Production
+```bash
+# Build the application
 npm run build
-npm run preview
+
+# The built files will be in the dist/ directory
 ```
 
-## Custom Domain
+### 4. Code Quality
+```bash
+# Run linting
+npm run lint
 
-Custom domain connection instructions will be added here.
+# Fix linting issues automatically
+npm run lint -- --fix
+```
 
-## Styling and Theming
+## 📱 Pages & Routes
 
-Primary colors are CSS variables in `src/index.css`. Update `--primary` and `--primary-foreground` in `:root`/`.dark` to re-theme.
+### Public Routes
+- `/` - Home page with hero section and features
+- `/about` - About the company and mission
+- `/services` - Services offered
+- `/research` - Research and development information
+- `/contact` - Contact information and form
+
+### Protected Routes (Require Authentication)
+- `/dashboard` - User dashboard with analytics
+- `/login` - Login page (redirects if already logged in)
+
+### API Integration
+- **Authentication**: Login, logout, token verification
+- **Dashboard**: User data, analytics, charts
+- **Error Handling**: Proper error states and user feedback
+
+## 🤖 Chatbot Configuration
+
+### Files
+- `public/inbenta-chatbot.js` - Chatbot integration and configuration
+- `public/chatbot/style.css` - Custom chatbot styling
+- `public/chatbot/inbenta-chatbot-style.css` - Additional chatbot styles
+
+### Configuration
+The chatbot is configured with:
+- **Custom title**: "Pharma Assistant"
+- **Healthcare-focused responses**
+- **Branded styling** to match the application
+- **Responsive design** for all devices
+
+### Development vs Production
+- **Development**: Uses development API keys and endpoints
+- **Production**: Uses production API keys and endpoints
+- **Local Testing**: Mock chatbot for CSS testing without API calls
+
+## 🎨 Styling Guidelines
+
+### CSS Architecture
+- **Tailwind CSS** for utility-first styling
+- **Component-scoped styles** for complex components
+- **CSS custom properties** for theming
+- **Responsive design** with mobile-first approach
+
+### Design System
+- **Color palette**: Professional pharmaceutical theme
+- **Typography**: Clean, readable fonts
+- **Spacing**: Consistent spacing scale
+- **Components**: Reusable, accessible components
+
+### Best Practices
+- Use Tailwind utilities for most styling
+- Create custom components for complex UI patterns
+- Maintain consistent spacing and typography
+- Ensure accessibility with proper ARIA attributes
+
+## 🚀 Deployment
+
+### Building for Production
+```bash
+# Build the application
+npm run build
+
+# The dist/ folder contains all built files
+```
+
+### Deployment Steps
+1. **Build the application**: `npm run build`
+2. **Upload dist/ contents** to your web server
+3. **Upload .htaccess file** for SPA routing (if using Apache)
+4. **Configure server** to serve index.html for all routes
+
+### Server Configuration
+For Single Page Application (SPA) routing:
+- **Apache**: Use the provided `.htaccess` file
+- **Nginx**: Configure try_files directive
+- **IIS**: Use the provided `web.config` file
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+#### 1. Page Not Found on Refresh
+**Problem**: Getting 404 errors when refreshing pages like `/login`
+**Solution**: Ensure `.htaccess` file is uploaded to server root directory
+
+#### 2. Chatbot Not Loading
+**Problem**: Chatbot shows error or doesn't appear
+**Solution**: 
+- Check Inbenta API keys in `public/inbenta-chatbot.js`
+- Verify domain configuration
+- Check browser console for errors
+
+#### 3. Build Failures
+**Problem**: `npm run build` fails
+**Solution**:
+- Check Node.js version (requires v18+)
+- Clear node_modules and reinstall: `rm -rf node_modules && npm install`
+- Check for TypeScript errors: `npm run lint`
+
+#### 4. CORS Errors
+**Problem**: API calls fail with CORS errors
+**Solution**:
+- Ensure backend is running on correct port
+- Check backend CORS configuration
+- Verify API URLs in environment variables
+
+### Development Tips
+- Use browser dev tools for debugging
+- Check the Network tab for API call issues
+- Use React DevTools for component debugging
+- Check console for JavaScript errors
+
+## 📚 Additional Resources
+
+### Documentation
+- [React Documentation](https://react.dev/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Vite Guide](https://vitejs.dev/guide/)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [shadcn/ui Components](https://ui.shadcn.com/)
+
+### Learning Resources
+- [React Router Tutorial](https://reactrouter.com/en/main/start/tutorial)
+- [React Hook Form Guide](https://react-hook-form.com/get-started)
+- [Zod Schema Validation](https://zod.dev/)
+
+---
+
+**Need Help?** Check the main project README or create an issue in the repository.

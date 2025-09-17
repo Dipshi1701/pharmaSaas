@@ -1,0 +1,1283 @@
+/* Modern PharmaSaas Chatbot Design - Using Main Design System */
+
+/* CSS Custom Properties (Variables) */
+:root {
+  /* Font Family */
+  --font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  
+  /* Brand Colors */
+  --primary-green: #10b981;
+  --primary-green-dark: #059669;
+  --primary-green-darker: #047857;
+  
+  /* Text Colors */
+  --text-primary: #1e293b;
+  --text-white: #ffffff;
+  --primary-foreground: 210 15% 96%;
+  
+  /* Background Colors */
+  --bg-white: #ffffff;
+  --background: 220 15% 97%;
+  --primary: 160 60% 38%;
+  
+  /* Error Colors */
+  --error-primary: #ef4444;
+  --error-dark: #dc2626;
+  --error-bg: #fef2f2;
+  --error-bg-dark: #fee2e2;
+  --error-text: #7f1d1d;
+  
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 50%;
+  
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 24px;
+  --spacing-3xl: 32px;
+  
+  /* Shadows */
+  --shadow-error: 0 4px 15px rgba(239, 68, 68, 0.3);
+  --shadow-soft: 0 4px 20px -2px hsl(var(--primary) / 0.1);
+  --shadow-medium: 0 10px 40px -10px hsl(var(--primary) / 0.15);
+  --shadow-strong: 0 20px 60px -10px hsl(var(--primary) / 0.2);
+  
+  /* Transitions */
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.4s ease;
+  --transition-bounce: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevent horizontal scrollbar from chatbot elements */
+body {
+  overflow-x: hidden;
+  padding-bottom: 100px;
+}
+
+/* Ensure main content doesn't get covered by chatbot */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 120px;
+  }
+}
+
+
+
+
+/* Modern Launcher Design - Green Theme Colors */
+.inbenta .inbenta-bot__launcher {
+  background: linear-gradient(135deg, hsl(160 60% 38%) 0%, hsl(160 60% 38% / 0.8) 100%);
+  color: hsl(210 15% 96%);
+  border-radius: 100px;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  height: 64px;
+  bottom: 20px;
+  right: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  position: fixed;
+  opacity: 1;
+  flex-direction: row;
+  padding: 0 20px;
+}
+
+/* Launcher Hover Effect - Match Explore Solutions Button */
+.inbenta .inbenta-bot__launcher:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+
+/* Custom launcher icon - Medical cross */
+.inbenta .inbenta-bot__launcher__image {
+  width: 18px;
+  height: 18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E")
+  no-repeat center;
+  background-size: 20px;
+  filter: none;
+  margin-right: 6px;
+  vertical-align: top;
+}
+
+.inbenta:hover .inbenta-bot__launcher__image {
+  transform: rotate(360deg);
+}
+
+/* Modern Chat Window Design */
+.inbenta .inbenta-bot__chat {
+  border-radius: 24px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  width: 420px;
+  height: 650px;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 40px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Modern Header Design */
+.inbenta-bot__chat__header {
+  background: linear-gradient(
+    135deg,
+    var(--primary-green) 0%,
+    var(--primary-green-dark) 100%
+  );
+  color: var(--text-white);
+  padding: 12px;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+  line-height: 1.4;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Header background pattern */
+.inbenta-bot__chat__header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+    repeat;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* Header title styling with custom logo */
+.inbenta-bot__chat .header__title {
+  font-family: var(--font-family);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  margin: 0px 74px;
+  color: hsl(var(--primary-foreground));
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header actions container */
+.inbenta-bot__chat .header__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Modern header action icons */
+.inbenta-bot__chat .header__actions__icon {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: var(--text-white);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+    padding: 8px;
+  border-radius: 100px;
+  transition: all var(--transition-bounce);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+/* Fallback for buttons without specific classes - show icons based on position */
+.inbenta-bot__chat .header__actions__icon:nth-child(1)::before {
+  content: "×";
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.inbenta-bot__chat .header__actions__icon:nth-child(2)::before {
+  content: "−";
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.inbenta-bot__chat .header__actions__icon:nth-child(3)::before {
+  content: "↻";
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Custom icons for header actions */
+.inbenta-bot__chat .header__actions__icon--close::before,
+.inbenta-bot__chat .header__actions__icon--close.inbenta-bot-icon::before {
+  content: "×";
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.inbenta-bot__chat .header__actions__icon--minimize::before,
+.inbenta-bot__chat .header__actions__icon--minimize.inbenta-bot-icon::before {
+  content: "−";
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.inbenta-bot__chat .header__actions__icon--reset-session::before,
+.inbenta-bot__chat
+  .header__actions__icon--reset-session.inbenta-bot-icon::before {
+  content: "↻";
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Header action icons hover effects */
+.inbenta-bot__chat .header__actions__icon:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.inbenta-bot__chat .header__actions__icon--close:hover {
+  background: rgba(239, 68, 68, 0.3);
+  color: #fecaca;
+  transform: scale(1.1) rotate(90deg);
+}
+
+.inbenta-bot__chat .header__actions__icon--minimize:hover {
+  background: rgba(59, 130, 246, 0.3);
+  color: #bfdbfe;
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.inbenta-bot__chat .header__actions__icon--reset-session:hover {
+  background: rgba(34, 197, 94, 0.3);
+  color: #bbf7d0;
+  transform: scale(1.1) rotate(180deg);
+}
+.inbenta .inbenta-bot__chat__confirmation {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 24px;
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(15px);
+}
+
+.inbenta
+  .inbenta-bot__chat__confirmation.inbenta-bot__chat__confirmation--active {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modern confirmation box design */
+.inbenta .inbenta-bot__chat__confirmation .confirmation-box {
+  position: relative;
+  min-width: 340px;
+  max-height: 80vh;
+  padding: 32px;
+  margin: 20px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 24px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transform: scale(1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+/* Confirmation box icon */
+.inbenta .inbenta-bot__chat__confirmation .confirmation-box__icon {
+  display: none;
+}
+
+/* Confirmation box title */
+.inbenta .inbenta-bot__chat__confirmation .confirmation-box__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+  text-align: center;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Confirmation box subtitle */
+.inbenta .inbenta-bot__chat__confirmation .confirmation-box__subtitle {
+  font-size: 15px;
+  color: #64748b;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Modern button styling */
+.inbenta .inbenta-bot__chat__confirmation .confirmation-box__buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.inbenta .inbenta-bot__chat__confirmation .inbenta-bot-button {
+  padding: 14px;
+  border-radius: 16px;
+  border: none;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.inbenta .inbenta-bot__chat__confirmation .inbenta-bot-button:first-child {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+  color: var(--text-white);
+  border: none;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  height: 44px;
+  padding: 0 32px;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 14px;
+  gap: 8px;
+  min-width: auto;
+  white-space: nowrap;
+}
+
+.inbenta .inbenta-bot__chat__confirmation .inbenta-bot-button:last-child {
+  background-color: var(--bg-white);
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+  border: 1px solid var(--primary-green);
+  box-shadow: none;
+  height: 44px;
+  padding: 0 32px;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 14px;
+  gap: 8px;
+  min-width: auto;
+  white-space: nowrap;
+}
+
+/* Yes Button Hover - Solid Green */
+.inbenta .inbenta-bot__chat__confirmation .inbenta-bot-button:first-child:hover {
+  background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green-darker) 100%);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  transform: none;
+}
+
+/* No Button Hover - Outlined Green */
+.inbenta .inbenta-bot__chat__confirmation .inbenta-bot-button:last-child:hover {
+  background-color: var(--primary-green);
+  color: var(--text-white);
+  transform: none;
+  transition: all 0.3s ease;
+}
+
+/* Modern Chat Body */
+.inbenta-bot__chat__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0px 12px;
+  background: #f8fafc;
+  position: relative;
+  min-height: 400px;
+}
+
+/* Avatar Content Styling */
+.inbenta-bot__chat__body .body__avatar-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Messages Container */
+.inbenta-bot__chat__body .body__wrapper__messages {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+/* Individual Message Styling - Updated for Real HTML Structure */
+.inbenta-bot__chat__body .messages__message {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  animation: slideInUp 0.4s ease-out;
+}
+
+/* Received Messages (Bot) - Real Structure */
+.inbenta-bot__chat__body .messages__message--received {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center !important;
+}
+
+.inbenta-bot__bubble .messages__message--received,
+.inbenta-bot__chat .messages__message--received {
+  align-items: center !important;
+}
+
+/* Bot Avatar Container - Show with proper styling */
+.inbenta-bot__chat__body
+  .messages__message--received
+  .messages__message__avatar {
+
+}
+
+/* Bot Avatar Icon - Simple Approach */
+.inbenta-bot__chat__body .inbenta-bot-icon--avatar,
+.inbenta-bot__chat__body
+  .messages__message--received
+  .inbenta-bot-icon--avatar {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+}
+
+.inbenta-bot__chat__body .inbenta-bot-icon--avatar::before,
+.inbenta-bot__chat__body
+  .messages__message--received
+  .inbenta-bot-icon--avatar::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-image: url("assistant.svg");
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block !important;
+}
+
+.inbenta-bot__chat__body .inbenta-bot-icon--avatar:hover {
+  transform: scale(1.05);
+}
+
+/* Bot Message Content - Clean White Bubble */
+.inbenta-bot__chat__body
+  .messages__message--received
+  .messages__message__content {
+  background: var(--bg-white);
+  color: var(--text-primary);
+  padding: 12px 16px;
+  border-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-sm);
+  font-size: 16px;
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: var(--font-family);
+  position: relative;
+  margin-right: 0;
+  margin-bottom: 12px;
+}
+
+.inbenta-bot__chat__body .messages__message--received .content__text p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Multiple Choice Buttons */
+.inbenta-bot__chat__body .content__buttons-wrapper {
+  /* margin-top: var(--spacing-lg); */
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-md);
+  justify-content: flex-start;
+}
+
+.inbenta-bot__chat__body .content__buttons {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  /* width: 100%; */
+}
+
+
+.inbenta-bot__chat__body
+  .content__buttons--multiple-choise
+  .inbenta-bot-button {
+  padding: 12px;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  transition: all var(--transition-bounce);
+  font-family: var(--font-family);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-align: center;
+  justify-content: center;
+  min-width: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Patient Button - Solid Green (Primary Action) - First button in wrapper */
+.inbenta-bot__chat__body .content__buttons-wrapper > div:first-child .inbenta-bot-button {
+  background: linear-gradient(135deg, hsl(160 60% 38%) 0%, hsl(160 60% 38% / 0.8) 100%) !important;
+  color: hsl(210 15% 96%) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3) !important;
+  height: 44px !important;
+  padding: 0 32px !important;
+  border-radius: calc(var(--radius-md) - 2px) !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+  gap: 8px !important;
+  min-width: auto !important;
+  white-space: nowrap !important;
+  transition-property: all !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 300ms !important;
+}
+
+/* HCP Button - Outlined Green (Secondary Action) - Second button in wrapper */
+.inbenta-bot__chat__body .content__buttons-wrapper > div:last-child .inbenta-bot-button {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--primary)) !important;
+  border-color: hsl(var(--primary)) !important;
+  border: 1px solid hsl(var(--primary)) !important;
+  box-shadow: none !important;
+  height: 44px !important;
+  padding: 0 32px !important;
+  border-radius: calc(var(--radius-md) - 2px) !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+  gap: 8px !important;
+  min-width: auto !important;
+  white-space: nowrap !important;
+  transition-property: all !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 300ms !important;
+}
+
+/* Patient Button Hover - Solid Green */
+.inbenta-bot__chat__body .content__buttons-wrapper > div:first-child .inbenta-bot-button:hover {
+  background: linear-gradient(135deg, hsl(160 60% 38%) 0%, hsl(160 60% 38% / 0.8) 100%) !important;
+  box-shadow: var(--shadow-medium) !important;
+  transform: none !important;
+}
+
+/* HCP Button Hover - Outlined Green */
+.inbenta-bot__chat__body .content__buttons-wrapper > div:last-child .inbenta-bot-button:hover {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  transform: none !important;
+}
+
+.inbenta-bot__chat__body
+  .content__buttons--multiple-choise
+  .inbenta-bot-button:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+/* Button ripple effect */
+.inbenta-bot__chat__body
+  .content__buttons--multiple-choise
+  .inbenta-bot-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.inbenta-bot__chat__body
+  .content__buttons--multiple-choise
+  .inbenta-bot-button:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* FAQ Icon in buttons - Professional theme */
+.inbenta-bot__chat__body .inbenta-bot-icon--faq-icon::before {
+  content: "";
+ 
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+}
+
+/* Patient Button Icon - First button in wrapper */
+.inbenta-bot__chat__body .content__buttons-wrapper > div:first-child .inbenta-bot-button .inbenta-bot-icon--faq-icon::before {
+  background-image: url("patient.svg") !important;
+  margin-right: 0 !important;
+  order: -1 !important;
+  transition: transform 0.3s ease !important;
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Patient Button Icon Hover Effect */
+.inbenta-bot__chat__body .content__buttons-wrapper > div:first-child .inbenta-bot-button:hover .inbenta-bot-icon--faq-icon::before {
+  transform: scale(1.1) !important;
+}
+
+/* Patient Button Text */
+.inbenta-bot__chat__body .content__buttons--multiple-choise .inbenta-bot-button:has(span:contains("Patient")) span:not(.inbenta-bot-icon--faq-icon),
+.inbenta-bot__chat__body .content__buttons--multiple-choise .inbenta-bot-button[data-role="patient"] span:not(.inbenta-bot-icon--faq-icon) {
+  order: 1;
+}
+
+/* HCP Button Icon - Second button in wrapper */
+.inbenta-bot__chat__body .content__buttons-wrapper > div:last-child .inbenta-bot-button .inbenta-bot-icon--faq-icon::before {
+  background-image: url("hcp.svg") !important;
+  margin-right: 0 !important;
+  order: -1 !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* HCP Button Icon Hover Effect */
+.inbenta-bot__chat__body .content__buttons-wrapper > div:last-child .inbenta-bot-button:hover .inbenta-bot-icon--faq-icon::before {
+  transform: scale(1.1) !important;
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Sent Messages (User) - Real Structure */
+.inbenta-bot__chat__body .messages__message--send {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+/* User Avatar Icon */
+.inbenta-bot__chat__body
+  .messages__message--send
+  .inbenta-bot-icon--avatar::before {
+  content: "U";
+  color: var(--text-white);
+  font-weight: bold;
+  font-size: 18px;
+  font-family: var(--font-family);
+}
+
+/* User Message Content - Light Green Bubble */
+.inbenta-bot__chat__body .messages__message--send .messages__message__content {
+  background: #e6f7f0;
+  color: var(--text-primary);
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-sm);
+  max-width: 80%;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: var(--font-family);
+  position: relative;
+  margin-left: 0;
+}
+
+/* User Message Text */
+.inbenta-bot__chat__body .messages__message--send .content__text {
+  color: var(--text-primary);
+  font-family: var(--font-family);
+}
+
+.inbenta-bot__chat__body .messages__message--send .content__text p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* User Messages Styling - Clean CONSUMER-like design */
+.inbenta-bot__chat__body .messages__message--sent {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.inbenta-bot__chat__body .messages__message--sent .messages__message__avatar {
+  display: none; /* Hide user avatar */
+}
+
+.inbenta-bot__chat__body .messages__message--sent .messages__message__content {
+  max-width: 70%;
+  margin-left: auto;
+}
+
+.inbenta-bot__chat__body .messages__message--sent .content__wrapper {
+  background: #f1f5f9;
+  border-radius: 16px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.inbenta-bot__chat__body .messages__message--sent .content__wrapper:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.inbenta-bot__chat__body .messages__message--sent .content__text {
+  color: #334155;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.inbenta-bot__chat__body .messages__message--sent .content__text div {
+  margin: 0;
+}
+
+.inbenta-bot__chat__body .messages__message--sent .content__text p {
+  margin: 0;
+}
+
+/* Hide "You" label in user messages */
+.inbenta-bot__chat__body .messages__message--sent .content__label {
+  display: none;
+}
+
+/* Custom scrollbar for chat body */
+.inbenta-bot__chat__body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.inbenta-bot__chat__body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-sm);
+}
+
+.inbenta-bot__chat__body::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    135deg,
+    var(--primary-green) 0%,
+    var(--primary-green-dark) 100%
+  );
+  border-radius: var(--radius-sm);
+}
+
+.inbenta-bot__chat__body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    135deg,
+    var(--primary-green-dark) 0%,
+    var(--primary-green-darker) 100%
+  );
+}
+
+/* Modern Chat Footer */
+.inbenta-bot__chat__footer {
+  flex-shrink: 0;
+  padding: 16px 20px;
+  background: hsl(var(--background));
+  border-top: none;
+  position: relative;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 10;
+}
+
+/* Footer Form Styling */
+.inbenta-bot__chat__footer .footer__form {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  width: 100%;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 48px;
+}
+
+.inbenta-bot__chat__footer .footer__form--focus {
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  transform: none;
+}
+
+/* Input Field Styling */
+.inbenta-bot__chat__footer .footer__form__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: transparent;
+  color: #1e293b;
+  border-radius: 0;
+  transition: all 0.2s ease;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  line-height: 1.4;
+}
+
+.inbenta-bot__chat__footer .footer__form__input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.inbenta-bot__chat__footer .footer__form__input:focus {
+  background: transparent;
+}
+
+.inbenta-bot__chat__footer .footer__form__input:disabled {
+  color: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Send Button Styling */
+.inbenta-bot__chat__footer .footer__form__button {
+  width: 40px;
+  height: 40px;
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+  display: flex !important
+;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+.inbenta-bot__chat__footer .footer__form__button:active:not(:disabled) {
+  transform: scale(0.95);
+  background: #1d4ed8;
+}
+
+.inbenta-bot__chat__footer .footer__form__button:disabled {
+  
+ 
+  cursor: not-allowed;
+  transform: none;
+ 
+}
+
+/* Send Button Icon - Updated for Real Structure */
+.inbenta-bot__chat__footer .footer__form__button .inbenta-bot-icon {
+  width: 18px;
+  height: 18px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.inbenta-bot__chat__footer .footer__form__button .inbenta-bot-icon--wait {
+  animation: spin 1s linear infinite;
+}
+
+/* Send icon (when not waiting) - Updated for inbenta-bot-icon--send */
+.inbenta-bot__chat__footer
+  .footer__form__button
+  .inbenta-bot-icon--send::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background-image: url("../chatbot/send-message.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+}
+
+/* Button Loading State */
+.inbenta-bot__chat__footer
+  .footer__form__button:disabled
+  .inbenta-bot-icon--wait::before {
+  content: "⏳";
+  font-size: 16px;
+  color: var(--text-white);
+}
+
+/* Hover effect for enabled button */
+.inbenta-bot__chat__footer
+  .footer__form__button:not(:disabled):hover
+  .inbenta-bot-icon--send {
+  transform: translateX(2px);
+}
+
+/* Fallback for any other send icon variations */
+.inbenta-bot__chat__footer
+  .footer__form__button
+  .inbenta-bot-icon:not(.inbenta-bot-icon--wait):not(
+    .inbenta-bot-icon--send
+  )::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background-image: url("../chatbot/send-message.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+}
+
+/* Focus states */
+.inbenta-bot__chat__footer .footer__form:focus-within {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2);
+}
+
+/* Animation for form focus */
+@keyframes formPulse {
+  0%,
+  100% {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  50% {
+    box-shadow: 0 6px 25px rgba(16, 185, 129, 0.15);
+  }
+}
+
+.inbenta-bot__chat__footer .footer__form--focus {
+  animation: formPulse 2s ease-in-out infinite;
+}
+
+/* Hide powered by Inbenta */
+.inbenta-bot__powered {
+  display: none !important;
+}
+
+/* Force footer visibility - Override any hiding rules */
+.inbenta-bot__chat__footer,
+.inbenta-bot__chat__footer * {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure footer is always at bottom */
+.inbenta-bot__chat {
+  position: relative;
+}
+
+.inbenta-bot__chat__footer {
+  position: relative !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* Modern Error Message */
+.inbenta-bot__chat__body .body__inbenta-alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+}
+
+.inbenta-bot__chat__body .body__inbenta-alert__alert-box {
+  background: linear-gradient(
+    145deg,
+    var(--error-bg) 0%,
+    var(--error-bg-dark) 100%
+  );
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-3xl);
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(239, 68, 68, 0.15);
+  border: 2px solid rgba(239, 68, 68, 0.1);
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.inbenta-bot__chat__body .body__inbenta-alert__alert-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.inbenta-bot__chat__body .alert-box__title {
+  color: var(--error-dark);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-family);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.inbenta-bot__chat__body .alert-box__title::before {
+  content: "⚠️";
+  font-size: 20px;
+}
+
+.inbenta-bot__chat__body .alert-box__message {
+  color: var(--error-text);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-xl);
+  font-family: var(--font-family);
+}
+
+.inbenta-bot__chat__body .alert-box .inbenta-bot-button {
+  background: linear-gradient(
+    135deg,
+    var(--error-primary) 0%,
+    var(--error-dark) 100%
+  );
+  color: var(--text-white);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all var(--transition-bounce);
+  box-shadow: var(--shadow-error);
+  font-family: var(--font-family);
+  position: relative;
+  overflow: hidden;
+}
+
+.inbenta-bot__chat__body .alert-box .inbenta-bot-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.inbenta-bot__chat__body .alert-box .inbenta-bot-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Legacy error message styling for compatibility */
+.inbenta-bot__chat .error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px;
+  text-align: center;
+  background: linear-gradient(145deg, #fef2f2 0%, #fee2e2 100%);
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.inbenta-bot__chat .error-message h2 {
+  color: #dc2626;
+  font-size: 28px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.inbenta-bot__chat .error-message p {
+  color: #7f1d1d;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.inbenta-bot__chat .error-message button {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+.inbenta-bot__chat .error-message button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(239, 68, 68, 0.5);
+}
+
+/* Modern Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 16px 50px rgba(16, 185, 129, 0.6),
+      0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%,
+  43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Modern Mock Chatbot Messages */
+.message {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  animation: slideInUp 0.4s ease-out;
+}
+
+.message__content {
+  padding: 16px 20px;
+  border-radius: 24px;
+  font-size: 15px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bot-message {
+  align-items: flex-start;
+}
+
+.bot-message .message__content {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  color: #334155;
+  border-bottom-left-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.user-message {
+  align-items: flex-end;
+}
+
+.user-message .message__content {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-radius: 24px;
+  border-bottom-left-radius: 8px;
+  max-width: 100px;
+  margin-bottom: 20px;
+}
+
+.typing-indicator span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #94a3b8;
+  animation: typing 1.6s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-12px);
+    opacity: 1;
+  }
+}
