@@ -2,6 +2,325 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Inbenta Search Customizations - Following official Inbenta documentation */
+/* Remove space-cowboy.css skin but keep layout.css structure */
+/* Use higher specificity selectors as recommended by Inbenta */
+
+/* Override Inbenta's search box container with higher specificity */
+.inbenta .inbenta-search-box,
+.space-y-6 .flex .inbenta-search-box,
+div.inbenta-search-box {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+/* Override Inbenta's form styling with higher specificity */
+.inbenta .inbenta-search-box__form,
+.inbenta .inbenta-search-box form,
+form.inbenta-search-box__form,
+.inbenta-search-box form {
+  display: flex !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border-radius: var(--radius) !important;
+}
+
+/* Override Inbenta's input styling with higher specificity */
+.inbenta .inbenta-search-input,
+.inbenta .inbenta-search-box input,
+.inbenta .form__input,
+input.inbenta-search-input,
+input.form__input,
+.inbenta-search-box input {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  height: 3rem !important;
+  padding: 0 1rem !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  outline: none !important;
+  background: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+  margin: 0 !important;
+  box-shadow: var(--shadow-soft) !important;
+  transition: all 0.2s ease !important;
+}
+
+.inbenta .inbenta-search-input:focus,
+.inbenta .inbenta-search-box input:focus,
+.inbenta .form__input:focus,
+.inbenta-search-input:focus,
+.form__input:focus,
+.inbenta-search-box input:focus {
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: var(--shadow-medium) !important;
+}
+
+.inbenta .inbenta-search-input::placeholder,
+.inbenta .inbenta-search-box input::placeholder,
+.inbenta .form__input::placeholder,
+.inbenta-search-input::placeholder,
+.form__input::placeholder,
+.inbenta-search-box input::placeholder {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* Override Inbenta's button styling with higher specificity */
+.inbenta .inbenta-search-button,
+.inbenta .inbenta-search-box button,
+.inbenta .form__button,
+button.inbenta-search-button,
+button.form__button,
+.inbenta-search-box button {
+  width: 3rem !important;
+  height: 3rem !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid hsl(var(--primary)) !important;
+  background: var(--gradient-primary) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: var(--shadow-soft) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.inbenta-search-button:hover,
+.form__button:hover,
+.inbenta-search-box button:hover {
+  background: var(--gradient-primary) !important;
+  box-shadow: var(--shadow-medium) !important;
+  transform: translateY(-1px) !important;
+}
+
+.inbenta-search-button:active,
+.form__button:active,
+.inbenta-search-box button:active {
+  transform: translateY(0) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+/* Search icon styling */
+.inbenta-search-icon,
+.inbenta-search-button svg,
+.form__button svg {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+/* Autocompleter styling */
+.inbenta-search-autocompleter,
+ul.inbenta-search-autocompleter {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-medium) !important;
+  z-index: 50 !important;
+  margin-top: 0.25rem !important;
+  max-height: 16rem !important;
+  overflow-y: auto !important;
+}
+
+.inbenta-search-autocompleter li,
+ul.inbenta-search-autocompleter li {
+  padding: 0.75rem 1rem !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  cursor: pointer !important;
+  transition: background-color 0.15s ease !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.inbenta-search-autocompleter li:last-child,
+ul.inbenta-search-autocompleter li:last-child {
+  border-bottom: none !important;
+}
+
+.inbenta-search-autocompleter li:hover,
+.inbenta-search-autocompleter li[aria-selected="true"],
+ul.inbenta-search-autocompleter li:hover,
+ul.inbenta-search-autocompleter li[aria-selected="true"] {
+  background: hsl(var(--muted) / 0.5) !important;
+  color: hsl(var(--primary)) !important;
+}
+
+/* Inbenta Search Pagination Styling */
+.inbenta-search-pagination,
+ol.inbenta-search-pagination {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 1rem 0 !important;
+  background: transparent !important;
+}
+
+.inbenta-search-pagination__item,
+ol.inbenta-search-pagination li {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.inbenta-search-pagination__item a,
+ol.inbenta-search-pagination li a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 2.5rem !important;
+  height: 2.5rem !important;
+  padding: 0.5rem !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+  text-decoration: none !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  transition: var(--transition-smooth) !important;
+  box-shadow: var(--shadow-soft) !important;
+  cursor: pointer !important;
+}
+
+.inbenta-search-pagination__item a:hover,
+ol.inbenta-search-pagination li a:hover {
+  background: hsl(var(--muted) / 0.5) !important;
+  border-color: hsl(var(--primary) / 0.3) !important;
+  color: hsl(var(--primary)) !important;
+  box-shadow: var(--shadow-medium) !important;
+  transform: translateY(-1px) !important;
+}
+
+.inbenta-search-pagination__item--active a,
+ol.inbenta-search-pagination li.inbenta-search-pagination__item--active a {
+  background: var(--gradient-primary) !important;
+  border-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  box-shadow: var(--shadow-medium) !important;
+  font-weight: 600 !important;
+}
+
+.inbenta-search-pagination__item--active a:hover,
+ol.inbenta-search-pagination li.inbenta-search-pagination__item--active a:hover {
+  background: var(--gradient-primary) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-strong) !important;
+}
+
+/* Navigation arrows styling */
+.inbenta-search-pagination__item--first a,
+.inbenta-search-pagination__item--previous a,
+.inbenta-search-pagination__item--next a,
+.inbenta-search-pagination__item--last a,
+ol.inbenta-search-pagination li.inbenta-search-pagination__item--first a,
+ol.inbenta-search-pagination li.inbenta-search-pagination__item--previous a,
+ol.inbenta-search-pagination li.inbenta-search-pagination__item--next a,
+ol.inbenta-search-pagination li.inbenta-search-pagination__item--last a {
+  background: hsl(var(--primary) / 0.1) !important;
+  border-color: hsl(var(--primary) / 0.2) !important;
+  color: hsl(var(--primary)) !important;
+}
+
+.inbenta-search-pagination__item--first a:hover,
+.inbenta-search-pagination__item--previous a:hover,
+.inbenta-search-pagination__item--next a:hover,
+.inbenta-search-pagination__item--last a:hover,
+ol.inbenta-search-pagination li.inbenta-search-pagination__item--first a:hover,
+ol.inbenta-search-pagination li.inbenta-search-pagination__item--previous a:hover,
+ol.inbenta-search-pagination li.inbenta-search-pagination__item--next a:hover,
+ol.inbenta-search-pagination li.inbenta-search-pagination__item--last a:hover {
+  background: hsl(var(--primary) / 0.2) !important;
+  border-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary)) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Disabled state */
+.inbenta-search-pagination__item a[aria-disabled="true"],
+ol.inbenta-search-pagination li a[aria-disabled="true"] {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+.inbenta-search-pagination__item a[aria-disabled="true"]:hover,
+ol.inbenta-search-pagination li a[aria-disabled="true"]:hover {
+  transform: none !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+/* Inbenta Search Loader Styling */
+.inbenta-search-loader {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(4px) !important;
+  visibility: visible !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  z-index: 10000 !important;
+}
+
+.inbenta-search-loader__load {
+  width: 3rem !important;
+  height: 3rem !important;
+  animation: inbenta-rotate 2s linear infinite !important;
+}
+
+.inbenta-search-loader__load__inner {
+  fill: none !important;
+  stroke: hsl(var(--primary)) !important;
+  stroke-width: 4 !important;
+  stroke-linecap: round !important;
+  stroke-dasharray: 90 !important;
+  stroke-dashoffset: 90 !important;
+  animation: inbenta-dash 1.5s ease-in-out infinite !important;
+}
+
+@keyframes inbenta-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes inbenta-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */

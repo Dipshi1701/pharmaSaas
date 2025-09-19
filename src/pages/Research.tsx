@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import KnowledgeSearch from '@/components/KnowledgeSearch';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -180,7 +181,7 @@ const Research = () => {
               <p className="text-xl text-muted-foreground">Leading innovation across multiple therapeutic areas</p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {researchAreas.map((area, index) => (
                 <motion.div
                   key={area.title}
@@ -204,14 +205,15 @@ const Research = () => {
                   </Card>
                 </motion.div>
               ))}
-            </div>
+            </div> */}
+             <KnowledgeSearch />
           </div>
         </section>
 
         {/* Research Tabs */}
         <section className="py-20 bg-medical-gray-light">
           <div className="container mx-auto px-4">
-            <Tabs defaultValue="pipeline" className="max-w-6xl mx-auto">
+            <Tabs defaultValue="pipeline" className="mx-auto">
               <TabsList className="grid w-full grid-cols-3">
                 <TabsTrigger value="pipeline">Drug Pipeline</TabsTrigger>
                 <TabsTrigger value="publications">Publications</TabsTrigger>
