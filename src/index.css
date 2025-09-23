@@ -159,6 +159,607 @@ ul.inbenta-search-autocompleter li[aria-selected="true"] {
   color: hsl(var(--primary)) !important;
 }
 
+.inbenta-search-autocompleter li a,
+ul.inbenta-search-autocompleter li a {
+  display: block !important;
+  width: 100% !important;
+  padding: 0.75rem 1rem !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.inbenta-search-autocompleter li a:hover,
+ul.inbenta-search-autocompleter li a:hover {
+  background: inherit !important;
+  color: inherit !important;
+}
+
+/* Inbenta Search Generative AI Styling */
+.inbenta-generative-ai-response,
+div.inbenta-generative-ai-response {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--primary) / 0.2) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Loading Response Container */
+.inbenta-generative-ai-response .loading-response-container {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Loading Header */
+.inbenta-generative-ai-response .loading-header {
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  padding: 0.75rem 1rem !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: var(--radius) var(--radius) 0 0 !important;
+  cursor: default !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+.inbenta-generative-ai-response .loading-header:hover {
+  background: hsl(var(--primary)) !important;
+}
+
+.inbenta-generative-ai-response .loading-header:focus {
+  outline: none !important;
+}
+
+/* Loading Title */
+.inbenta-generative-ai-response .loading-title {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: hsl(var(--primary-foreground)) !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+/* Hide the loading title completely */
+.inbenta-generative-ai-response .loading-title {
+  display: none !important;
+}
+
+/* Expand Arrow - Hide it */
+.inbenta-generative-ai-response .expand-arrow {
+  display: none !important;
+}
+
+/* Response Divider - Hide it */
+.inbenta-generative-ai-response .response-divider {
+  display: none !important;
+}
+
+/* Response Wrapper */
+.inbenta-generative-ai-response .response-wrapper {
+  padding: 1rem !important;
+  background: hsl(var(--card)) !important;
+}
+
+/* Response Content */
+.inbenta-generative-ai-response .response-content {
+  color: hsl(var(--foreground)) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+  margin-bottom: 1rem !important;
+  padding: 16px;
+
+  min-height: 20px !important;
+  max-height: 200px !important;
+  overflow-y: auto !important;
+
+  position: relative !important;
+}
+
+/* Loading state for response content */
+.inbenta-generative-ai-response .response-content[data-loading="true"] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.inbenta-generative-ai-response .response-content[data-loading="true"]::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 20px !important;
+  height: 20px !important;
+  border: 2px solid hsl(var(--primary) / 0.3) !important;
+  border-radius: 50% !important;
+  border-top-color: hsl(var(--primary)) !important;
+  animation: ai-response-spin 1s linear infinite !important;
+  margin-right: 8px !important;
+}
+
+.inbenta-generative-ai-response .response-content[data-loading="true"]::after {
+  content: "Generating AI response..." !important;
+  font-size: 0.875rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* Style Inbenta's default loading placeholder - Compact version */
+.inbenta-generative-ai-response .loading-placeholder {
+  padding: 1rem !important;
+  background: hsl(var(--card)) !important;
+  min-height: 50px !important;
+  max-height: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.inbenta-generative-ai-response .loading-placeholder::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 18px !important;
+  height: 18px !important;
+  border: 2px solid hsl(var(--primary) / 0.3) !important;
+  border-radius: 50% !important;
+  border-top-color: hsl(var(--primary)) !important;
+  animation: ai-response-spin 1s linear infinite !important;
+  margin-right: 0.5rem !important;
+}
+
+.inbenta-generative-ai-response .loading-placeholder::after {
+  content: "Generating AI response..." !important;
+  font-size: 0.875rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+  font-weight: 500 !important;
+}
+
+/* Hide the placeholder lines and just show our custom loader */
+.inbenta-generative-ai-response .placeholder-line {
+  display: none !important;
+}
+
+@keyframes placeholder-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes ai-response-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.inbenta-generative-ai-response .response-content:focus {
+  outline: 2px solid hsl(var(--primary) / 0.5) !important;
+  outline-offset: 2px !important;
+  border-radius: var(--radius) !important;
+}
+
+/* Disclaimer Container - Only show for valid AI responses */
+.inbenta-generative-ai-response .disclaimer-container {
+  margin-top: 1rem !important;
+  padding: 0.75rem 1rem !important;
+  background: hsl(var(--destructive) / 0.05) !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid hsl(var(--destructive) / 0.2) !important;
+  border-left: 3px solid hsl(var(--destructive)) !important;
+}
+
+/* Hide disclaimer for error responses */
+.inbenta-generative-ai-response[data-response-type="error"] .disclaimer-container,
+.inbenta-generative-ai-response[data-response-type="skip"] .disclaimer-container {
+  display: none !important;
+}
+
+.inbenta-generative-ai-response .disclaimer-container .info-icon {
+  display: none !important;
+}
+
+.inbenta-generative-ai-response .disclaimer-container::before {
+  content: "ⓘ Medical Disclaimer: " !important;
+  color: hsl(var(--destructive)) !important;
+  font-weight: 600 !important;
+  font-size: 0.8rem !important;
+}
+
+.inbenta-generative-ai-response .disclaimer-container::after {
+  content: "This content is AI-generated for informational purposes only and should not replace professional medical advice, diagnosis, or treatment." !important;
+  display: block !important;
+  font-size: 0.8rem !important;
+  color: hsl(var(--foreground)) !important;
+  margin-top: 0.25rem !important;
+  line-height: 1.4 !important;
+}
+
+/* Error Message */
+.inbenta-generative-ai-response .error-message {
+  color: hsl(var(--destructive)) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  padding: 1rem !important;
+  background: hsl(var(--destructive) / 0.05) !important;
+  border: 1px solid hsl(var(--destructive) / 0.2) !important;
+  border-radius: var(--radius) !important;
+  text-align: center !important;
+}
+
+.inbenta-generative-ai-response .error-message:focus {
+  outline: 2px solid hsl(var(--destructive) / 0.5) !important;
+  outline-offset: 2px !important;
+}
+
+/* Link Section */
+.inbenta-generative-ai-response .link-section {
+  background: hsl(var(--muted) / 0.3) !important;
+  padding: 1rem 1.5rem !important;
+  border-top: 1px solid hsl(var(--border)) !important;
+  font-size: 0.75rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+  text-align: center !important;
+}
+
+.inbenta-generative-ai-response .link-section a {
+  color: hsl(var(--primary)) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+  font-weight: 500 !important;
+}
+
+.inbenta-generative-ai-response .link-section a:hover {
+  color: hsl(var(--primary) / 0.8) !important;
+  text-decoration: underline !important;
+}
+
+/* AI Response Content Styling */
+.inbenta-generative-ai-response .response-content p {
+  margin-bottom: 0.75rem !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.inbenta-generative-ai-response .response-content p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.inbenta-generative-ai-response .response-content strong {
+  color: hsl(var(--primary)) !important;
+  font-weight: 600 !important;
+}
+
+.inbenta-generative-ai-response .response-content em {
+  color: hsl(var(--muted-foreground)) !important;
+  font-style: italic !important;
+}
+
+/* Context Information - Sources Section */
+.inbenta-generative-ai-response .response-context {
+  background: hsl(var(--muted) / 0.1) !important;
+  border-radius: var(--radius) !important;
+  padding: 1rem !important;
+  margin-top: 1.5rem !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-left: 3px solid hsl(var(--primary)) !important;
+}
+
+.inbenta-generative-ai-response .response-context-title {
+  font-weight: 600 !important;
+  color: hsl(var(--primary)) !important;
+  margin-bottom: 1rem !important;
+  font-size: 0.875rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.inbenta-generative-ai-response .response-context-title::before {
+  content: "📚" !important;
+  font-size: 1rem !important;
+}
+
+.inbenta-generative-ai-response .context-item {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  padding: 1rem !important;
+  margin-bottom: 0.75rem !important;
+  transition: all 0.2s ease !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.inbenta-generative-ai-response .context-item:hover {
+  box-shadow: var(--shadow-medium) !important;
+  transform: translateY(-1px) !important;
+  border-color: hsl(var(--primary) / 0.3) !important;
+}
+
+.inbenta-generative-ai-response .context-item:last-child {
+  margin-bottom: 0 !important;
+}
+
+.inbenta-generative-ai-response .context-item-title {
+  font-weight: 600 !important;
+  color: hsl(var(--foreground)) !important;
+  font-size: 0.875rem !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+  line-height: 1.4 !important;
+}
+
+.inbenta-generative-ai-response .context-item-text {
+  color: hsl(var(--muted-foreground)) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  margin-bottom: 0.75rem !important;
+  display: block !important;
+}
+
+.inbenta-generative-ai-response .context-item-url {
+  color: hsl(var(--primary)) !important;
+  text-decoration: none !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+  word-break: break-all !important;
+}
+
+.inbenta-generative-ai-response .context-item-url:hover {
+  color: hsl(var(--primary) / 0.8) !important;
+  text-decoration: underline !important;
+}
+
+.inbenta-generative-ai-response .context-item-url::before {
+  content: "🔗" !important;
+  font-size: 0.75rem !important;
+  margin-right: 0.25rem !important;
+}
+
+/* Response Context Wrapper */
+.inbenta-generative-ai-response .response-context-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+}
+
+/* Responsive design for context items */
+@media (max-width: 768px) {
+  .inbenta-generative-ai-response .context-item {
+    padding: 0.75rem !important;
+  }
+  
+  .inbenta-generative-ai-response .context-item-url {
+    font-size: 0.75rem !important;
+    word-break: break-all !important;
+  }
+}
+
+/* Loading State */
+.inbenta-generative-ai-response .loading-spinner {
+  display: inline-block !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  border: 2px solid hsl(var(--primary) / 0.3) !important;
+  border-radius: 50% !important;
+  border-top-color: hsl(var(--primary)) !important;
+  animation: spin 1s ease-in-out infinite !important;
+  margin-right: 0.5rem !important;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success State */
+.inbenta-generative-ai-response .success-indicator {
+  color: hsl(var(--primary)) !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.inbenta-generative-ai-response .success-indicator::before {
+  content: "✓" !important;
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.75rem !important;
+  font-weight: bold !important;
+}
+
+/* Consent Dialog Styling - Inline consent within AI component */
+.inbenta-generative-ai-response .consent-container {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--primary) / 0.2) !important;
+  border-radius: var(--radius) !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+}
+
+.inbenta-generative-ai-response .consent-section {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.inbenta-generative-ai-response .inner-section {
+  padding: 1.5rem !important;
+  background: hsl(var(--card)) !important;
+}
+
+.inbenta-generative-ai-response .consent-title {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: hsl(var(--foreground)) !important;
+  margin: 0 0 1rem 0 !important;
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+}
+
+.inbenta-generative-ai-response .consent-title::before {
+  content: "🤖" !important;
+  font-size: 1.2rem !important;
+}
+
+.inbenta-generative-ai-response .consent-divider {
+  border: none !important;
+  height: 1px !important;
+  background: hsl(var(--border)) !important;
+  margin: 1rem 0 !important;
+  opacity: 0.5 !important;
+}
+
+.inbenta-generative-ai-response .consent-body {
+  color: hsl(var(--muted-foreground)) !important;
+  margin-bottom: 1.5rem !important;
+  line-height: 1.6 !important;
+  font-size: 0.9rem !important;
+  text-align: center !important;
+}
+
+.inbenta-generative-ai-response .consent-body a {
+  color: hsl(var(--primary)) !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease !important;
+}
+
+.inbenta-generative-ai-response .consent-body a:hover {
+  color: hsl(var(--primary) / 0.8) !important;
+  text-decoration: underline !important;
+}
+
+.inbenta-generative-ai-response .consent-buttons {
+  display: flex !important;
+  gap: 1rem !important;
+  justify-content: center !important;
+  margin-bottom: 0 !important;
+}
+
+.inbenta-generative-ai-response .btn {
+  padding: 0.75rem 1.5rem !important;
+  border-radius: var(--radius) !important;
+  border: none !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-size: 0.9rem !important;
+  min-width: 100px !important;
+}
+
+.inbenta-generative-ai-response .btn-accept {
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.inbenta-generative-ai-response .btn-accept:hover {
+  background: hsl(var(--primary) / 0.9) !important;
+  box-shadow: var(--shadow-medium) !important;
+  transform: translateY(-1px) !important;
+}
+
+.inbenta-generative-ai-response .btn-decline {
+  background: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.inbenta-generative-ai-response .btn-decline:hover {
+  background: hsl(var(--accent)) !important;
+  color: hsl(var(--accent-foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+
+.inbenta-generative-ai-response .link-section {
+  background: hsl(var(--muted) / 0.3) !important;
+  padding: 0.75rem 1.5rem !important;
+  border-top: 1px solid hsl(var(--border)) !important;
+  text-align: center !important;
+  font-size: 0.8rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.inbenta-generative-ai-response .link-section a {
+  color: hsl(var(--primary)) !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease !important;
+}
+
+.inbenta-generative-ai-response .link-section a:hover {
+  color: hsl(var(--primary) / 0.8) !important;
+  text-decoration: underline !important;
+}
+
+/* Search Stats Styling - Position with search results */
+.inbenta-search-stats,
+div.inbenta-search-stats {
+  font-size: 0.875rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+  margin: 0 0 1rem 0 !important;
+  padding: 0.5rem 0 !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  font-weight: 500 !important;
+}
+
+.inbenta-search-stats strong,
+div.inbenta-search-stats strong {
+  color: hsl(var(--foreground)) !important;
+  font-weight: 600 !important;
+}
+
+/* No Results Styling - Position with search results */
+.inbenta-search-no-results,
+div.inbenta-search-no-results {
+  background: hsl(var(--muted) / 0.1) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  padding: 2rem !important;
+  text-align: center !important;
+  color: hsl(var(--muted-foreground)) !important;
+  margin: 0 !important;
+}
+
+.inbenta-search-no-results h3,
+div.inbenta-search-no-results h3 {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: hsl(var(--foreground)) !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.inbenta-search-no-results p,
+div.inbenta-search-no-results p {
+  font-size: 0.9rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+}
+
 /* Inbenta Search Pagination Styling */
 .inbenta-search-pagination,
 ol.inbenta-search-pagination {
@@ -266,6 +867,340 @@ ol.inbenta-search-pagination li a[aria-disabled="true"] {
 ol.inbenta-search-pagination li a[aria-disabled="true"]:hover {
   transform: none !important;
   box-shadow: var(--shadow-soft) !important;
+}
+
+/* Inbenta Knowledge Management (KM) SDK Styling */
+
+/* Knowledge Base Search Box */
+.inbenta-km-search-box,
+.inbenta-km-search-box input {
+  width: 100% !important;
+  height: 3rem !important;
+  padding: 0 1rem !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  background: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  font-size: 0.875rem !important;
+  transition: all 0.2s ease !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.inbenta-km-search-box input:focus {
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: var(--shadow-medium) !important;
+  outline: none !important;
+}
+
+.inbenta-km-search-box input::placeholder {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* Autocompleter for Knowledge Base */
+.inbenta-km-autocompleter,
+.autocompleter-container .inbenta-km-autocompleter {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-medium) !important;
+  z-index: 50 !important;
+  margin-top: 0.25rem !important;
+  max-height: 16rem !important;
+  overflow-y: auto !important;
+}
+
+.inbenta-km-autocompleter li {
+  padding: 0.75rem 1rem !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  cursor: pointer !important;
+  transition: background-color 0.15s ease !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.inbenta-km-autocompleter li:hover,
+.inbenta-km-autocompleter li.selected {
+  background: hsl(var(--muted) / 0.5) !important;
+  color: hsl(var(--primary)) !important;
+}
+
+/* Knowledge Base Results */
+.inbenta-km-results,
+.results-container .inbenta-km-results {
+  margin-top: 1rem !important;
+}
+
+.inbenta-km-results .result-item {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  padding: 1.5rem !important;
+  margin-bottom: 1rem !important;
+  transition: all 0.2s ease !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.inbenta-km-results .result-item:hover {
+  box-shadow: var(--shadow-medium) !important;
+  transform: translateY(-1px) !important;
+  border-color: hsl(var(--primary) / 0.3) !important;
+}
+
+.inbenta-km-results .result-title {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: hsl(var(--foreground)) !important;
+  margin-bottom: 0.75rem !important;
+  line-height: 1.4 !important;
+}
+
+.inbenta-km-results .result-title a {
+  color: hsl(var(--foreground)) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.inbenta-km-results .result-title a:hover {
+  color: hsl(var(--primary)) !important;
+}
+
+.inbenta-km-results .result-content {
+  color: hsl(var(--muted-foreground)) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.6 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Knowledge Base Categories */
+.inbenta-km-categories,
+.categories-container .inbenta-km-categories {
+  display: grid !important;
+  gap: 0.75rem !important;
+}
+
+.inbenta-km-categories .category-item {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  padding: 1rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.inbenta-km-categories .category-item:hover {
+  background: hsl(var(--muted) / 0.3) !important;
+  border-color: hsl(var(--primary) / 0.5) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.inbenta-km-categories .category-title {
+  font-weight: 500 !important;
+  color: hsl(var(--foreground)) !important;
+  font-size: 0.9rem !important;
+}
+
+.inbenta-km-categories .category-count {
+  background: hsl(var(--primary) / 0.1) !important;
+  color: hsl(var(--primary)) !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 0.375rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+}
+
+/* Knowledge Base Popular Content */
+.inbenta-km-popular,
+.popular-container .inbenta-km-popular {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+}
+
+.inbenta-km-popular .popular-item {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  padding: 1rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  border-left: 3px solid hsl(var(--primary)) !important;
+}
+
+.inbenta-km-popular .popular-item:hover {
+  background: hsl(var(--muted) / 0.2) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.inbenta-km-popular .popular-title {
+  font-weight: 500 !important;
+  color: hsl(var(--foreground)) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.inbenta-km-popular .popular-title a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.inbenta-km-popular .popular-title a:hover {
+  color: hsl(var(--primary)) !important;
+}
+
+/* Knowledge Base Push Content */
+.inbenta-km-push,
+.push-container .inbenta-km-push {
+  margin-top: 1rem !important;
+  padding-top: 1rem !important;
+  border-top: 1px solid hsl(var(--border)) !important;
+}
+
+.inbenta-km-push .push-item {
+  background: hsl(var(--muted) / 0.1) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  padding: 0.75rem !important;
+  margin-bottom: 0.5rem !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.inbenta-km-push .push-item:hover {
+  background: hsl(var(--muted) / 0.3) !important;
+  border-color: hsl(var(--primary) / 0.3) !important;
+}
+
+.inbenta-km-push .push-title {
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  color: hsl(var(--foreground)) !important;
+  line-height: 1.3 !important;
+}
+
+.inbenta-km-push .push-title a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Knowledge Base Loader */
+.inbenta-km-loader,
+.loader-container .inbenta-km-loader {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 2rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.inbenta-km-loader::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  border: 2px solid hsl(var(--primary) / 0.3) !important;
+  border-radius: 50% !important;
+  border-top-color: hsl(var(--primary)) !important;
+  animation: km-spin 1s linear infinite !important;
+  margin-right: 0.5rem !important;
+}
+
+.inbenta-km-loader::after {
+  content: "Loading..." !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+}
+
+@keyframes km-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Knowledge Base No Results */
+.inbenta-km-no-results {
+  text-align: center !important;
+  padding: 2rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+  background: hsl(var(--muted) / 0.1) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  margin: 1rem 0 !important;
+}
+
+.inbenta-km-no-results h3 {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: hsl(var(--foreground)) !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.inbenta-km-no-results p {
+  font-size: 0.9rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+  margin: 0 !important;
+}
+
+/* Rating System */
+.inbenta-km-ratings {
+  margin-top: 1rem !important;
+  padding: 1rem !important;
+  background: hsl(var(--muted) / 0.1) !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+.inbenta-km-ratings .rating-title {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: hsl(var(--foreground)) !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.inbenta-km-ratings .rating-buttons {
+  display: flex !important;
+  gap: 0.5rem !important;
+}
+
+.inbenta-km-ratings button {
+  padding: 0.5rem 1rem !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  background: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-size: 0.8rem !important;
+}
+
+.inbenta-km-ratings button:hover {
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  border-color: hsl(var(--primary)) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .inbenta-km-categories {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .inbenta-km-results .result-item {
+    padding: 1rem !important;
+  }
+  
+  .inbenta-km-popular .popular-item,
+  .inbenta-km-push .push-item {
+    padding: 0.75rem !important;
+  }
 }
 
 /* Inbenta Search Loader Styling */
