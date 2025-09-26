@@ -1379,3 +1379,66 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* ====================================================================
+   UNIFIED LOGO STYLING
+   ==================================================================== */
+
+/* Universal logo styling - works for both header and footer */
+.logo-cliniview {
+  background: transparent !important;
+  transition: all 0.3s ease;
+  object-fit: contain;
+  object-position: center;
+  /* Scale the logo image without affecting container height */
+  transform: scale(2.8);
+  transform-origin: left center;
+  /* Add margin to prevent overlap */
+  margin-right: 2rem;
+}
+
+
+
+.logo-cliniview.sc {
+  transform: scale(3.6)
+}
+
+/* Dark mode logo adjustments */
+@media (prefers-color-scheme: dark) {
+  .logo-cliniview {
+    filter: brightness(1.1) contrast(1.05) saturate(1.05);
+  }
+}
+
+/* Logo hover effect */
+.logo-cliniview:hover {
+  filter: brightness(1.05) contrast(1.1) saturate(1.1);
+  transform: translateY(-1px) scale(2.85);
+}
+
+/* Override SVG text colors to match design system */
+/* For header logo (light background) - use foreground color */
+.logo-header.logo-cliniview path[fill="#1A2544"],
+.logo-header.logo-cliniview path[fill="#1A2443"],
+.logo-header.logo-cliniview path[fill="#242C4B"] {
+  fill: hsl(var(--foreground)) !important;
+}
+
+/* For footer logo (dark background) - use background color (white) */
+.footer-logo.logo-cliniview path[fill="#FDFDFD"],
+.footer-logo.logo-cliniview path[fill="#FAFAFA"], 
+.footer-logo.logo-cliniview path[fill="#FBFBFB"],
+.footer-logo.logo-cliniview path[fill="#F9FAFA"],
+.footer-logo.logo-cliniview path[fill="#F8F8F8"],
+.footer-logo.logo-cliniview path[fill="#F7F7F8"],
+.footer-logo.logo-cliniview path[fill="#FCFCFC"],
+.footer-logo.logo-cliniview path[fill="#F9F9FA"] {
+  fill: hsl(var(--background)) !important;
+}
+
+/* Keep the green medical cross icon unchanged for both */
+.logo-cliniview path[fill="#1EB268"],
+.logo-cliniview path[fill="#1CAA5E"],
+.logo-cliniview path[fill="#1AA554"] {
+  /* Keep original green colors for the medical cross */
+}

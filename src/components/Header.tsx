@@ -81,11 +81,12 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">P</span>
-              </div>
-              <span className="text-2xl font-bold text-foreground">PharmaSaas</span>
+            <Link to="/" className="flex items-center">
+              <img 
+                src="/logo_cliniview.svg" 
+                alt="Cliniview" 
+                className="h-12 w-auto logo-header logo-cliniview"
+              />
             </Link>
           </motion.div>
 

@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import InbentaKnowledge from '@/components/inbentaKnowledge';
+import InbentaDeflection from '@/components/InbentaDeflection';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -57,6 +59,8 @@ const Contact = () => {
   return (
     <div className="min-h-screen">
       <Header />
+      {/* Initialize Inbenta Deflection for contact form */}
+      <InbentaDeflection />
       <main className="pt-20">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-hero">
@@ -99,56 +103,86 @@ const Contact = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name</Label>
-                        <Input id="firstName" placeholder="John" />
+                    <form id="contact-form-1234" onSubmit={(e) => e.preventDefault()}>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName">First Name</Label>
+                          <Input id="firstName" placeholder="John" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName">Last Name</Label>
+                          <Input id="lastName" placeholder="Doe" />
+                        </div>
                       </div>
+                      
                       <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name</Label>
-                        <Input id="lastName" placeholder="Doe" />
+                        <Label htmlFor="email">Email</Label>
+                        <Input id="email" type="email" placeholder="john.doe@example.com" />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="company">Company</Label>
+                        <Input id="company" placeholder="Your Company Name" />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="reason">Reason for Contact</Label>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a reason" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {contactReasons.map((reason) => (
+                              <SelectItem key={reason} value={reason.toLowerCase().replace(/\s+/g, '-')}>
+                                {reason}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="subject">Subject</Label>
+                        <Input id="subject" placeholder="Brief subject of your inquiry" />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="message">Message</Label>
+                        <Textarea 
+                          id="message" 
+                          placeholder="Tell us more about your inquiry..."
+                          rows={6}
+                        />
+                      </div>
+
+                      {/* Deflection suggestions container */}
+                      <div id="instants" className="deflection-container mt-4 p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg hidden">
+                        <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">This might interest you</h4>
+                        <div className="deflection-content"></div>
+                      </div>
+                      
+                      <Button type="submit" className="w-full bg-gradient-primary hover:shadow-medium">
+                        <Send className="w-4 h-4 mr-2" />
+                        Send Message
+                      </Button>
+                    </form>
+
+                    {/* Last chance modal container */}
+                    <div id="last-chance" className="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl max-w-md w-full mx-4">
+                        <h3 className="text-lg font-semibold mb-4">Before you submit...</h3>
+                        <p className="text-gray-600 dark:text-gray-300 mb-4">We found some articles that might help answer your question:</p>
+                        <div className="last-chance-content mb-4"></div>
+                        <div className="flex gap-2">
+                          <Button variant="outline" className="flex-1" onClick={() => document.getElementById('last-chance').style.display='none'}>
+                            Cancel
+                          </Button>
+                          <Button className="flex-1">
+                            Submit Anyway
+                          </Button>
+                        </div>
                       </div>
                     </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="john.doe@example.com" />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Company</Label>
-                      <Input id="company" placeholder="Your Company Name" />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="reason">Reason for Contact</Label>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a reason" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {contactReasons.map((reason) => (
-                            <SelectItem key={reason} value={reason.toLowerCase().replace(/\s+/g, '-')}>
-                              {reason}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea 
-                        id="message" 
-                        placeholder="Tell us more about your inquiry..."
-                        rows={6}
-                      />
-                    </div>
-                    
-                    <Button className="w-full bg-gradient-primary hover:shadow-medium">
-                      <Send className="w-4 h-4 mr-2" />
-                      Send Message
-                    </Button>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -213,8 +247,33 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* Office Locations */}
+        {/* Knowledge Base Section */}
         <section className="py-20 bg-medical-gray-light">
+          <div className="container mx-auto px-4">
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl font-bold text-foreground mb-4">Help & Support</h2>
+              <p className="text-xl text-muted-foreground">
+                Find instant answers to your questions about our pharmaceutical services
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <InbentaKnowledge />
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Office Locations */}
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <motion.div
               className="text-center mb-16"

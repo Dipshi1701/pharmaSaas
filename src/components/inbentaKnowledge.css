@@ -1,0 +1,820 @@
+/* Search container */
+.inbenta-km__search {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+
+/* Search form */
+.inbenta-km__search__form {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  position: relative !important;
+}
+/* Override index.css button styles with higher specificity */
+.inbenta-knowledge-container .inbenta-km__search__form .form__button,
+.inbenta-knowledge-container .form__button,
+.inbenta-search-button,
+.inbenta-search-box button {
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Input field - targeting both classes from the HTML */
+.inbenta-km-input.form__input {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  height: 3rem !important;
+  padding: 0 1rem !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  outline: none !important;
+  background: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+  margin: 0 !important;
+  box-shadow: var(--shadow-soft) !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Button styles with maximum specificity to override index.css */
+.inbenta-knowledge-container
+  .inbenta-km__search__form
+  .form__button
+  .inbenta-km-button,
+.inbenta-knowledge-container .inbenta-km-button,
+html
+  body
+  .inbenta-knowledge-container
+  .inbenta-km__search__form
+  .form__button
+  .inbenta-km-button {
+  all: unset !important;
+  height: 48px !important;
+  width: 48px !important;
+  border-radius: var(--radius) !important;
+  border: 1px solid hsl(var(--primary)) !important;
+  background: var(--gradient-primary) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: var(--shadow-soft) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  outline: none !important;
+}
+
+/* Disable any index.css button styles specifically */
+.inbenta-knowledge-container button[class*="inbenta-km"] {
+  all: unset !important;
+}
+
+/* ====================================================================
+       RESULTS COMPONENT STYLING
+   ==================================================================== */
+
+/* Results container */
+.inbenta-knowledge-container .inbenta-km__results {
+  margin-top: 1.5rem !important;
+  background: transparent !important;
+}
+
+/* Results title */
+.inbenta-knowledge-container .inbenta-km-title {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  color: hsl(var(--foreground)) !important;
+  margin-bottom: 1rem !important;
+  padding: 0 !important;
+}
+
+/* FAQ container */
+.inbenta-knowledge-container .inbenta-km__faqs {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+/* Individual FAQ item */
+.inbenta-knowledge-container .inbenta-km__faq {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  overflow: hidden !important;
+  transition: all 0.2s ease !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.inbenta-knowledge-container .inbenta-km__faq:hover {
+  box-shadow: var(--shadow-medium) !important;
+  transform: translateY(-2px) !important;
+  border-color: hsl(var(--primary) / 0.3) !important;
+}
+
+/* FAQ title/header */
+.inbenta-knowledge-container .inbenta-km__faq__title {
+  padding: 1rem 1.25rem !important;
+  background: hsl(var(--muted) / 0.1) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.inbenta-knowledge-container .inbenta-km__faq__title:hover {
+  background: hsl(var(--muted) / 0.2) !important;
+}
+
+/* Hide default title icon */
+.inbenta-knowledge-container .title__icon {
+  display: none !important;
+}
+
+/* FAQ title text container */
+.inbenta-knowledge-container .title__faq {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  gap: 1rem !important;
+}
+
+/* FAQ title text */
+.inbenta-knowledge-container .title__faq__text {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: hsl(var(--foreground)) !important;
+  line-height: 1.4 !important;
+  flex: 1 !important;
+}
+
+/* FAQ expand/collapse icon */
+.inbenta-knowledge-container .title__faq__icon {
+  width: 1rem !important;
+  height: 1rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+  transition: transform 0.2s ease, color 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.inbenta-knowledge-container .inbenta-km__faq--active .title__faq__icon {
+  transform: rotate(180deg) !important;
+  color: hsl(var(--primary)) !important;
+}
+
+/* FAQ body/content */
+.inbenta-knowledge-container .inbenta-km__faq__body {
+  padding: 1.25rem !important;
+  background: hsl(var(--card)) !important;
+}
+
+/* FAQ content text */
+.inbenta-knowledge-container .body__contents {
+  margin-bottom: 1.5rem !important;
+}
+
+.inbenta-knowledge-container .body__contents__item {
+  color: hsl(var(--foreground)) !important;
+  line-height: 1.6 !important;
+  font-size: 0.9rem !important;
+}
+
+.inbenta-knowledge-container .body__contents__item p {
+  margin: 0 !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+/* ====================================================================
+       RATING COMPONENT STYLING
+   ==================================================================== */
+
+/* Rating container */
+.inbenta-knowledge-container .body__rating {
+  border-top: 1px solid hsl(var(--border)) !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+}
+
+.inbenta-knowledge-container .inbenta-km__rating__content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem !important;
+}
+
+/* Rating question text */
+.inbenta-knowledge-container .content__phrase {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: hsl(var(--muted-foreground)) !important;
+  margin: 0 !important;
+}
+
+/* Rating buttons container */
+.inbenta-knowledge-container .content__buttons {
+  display: flex !important;
+  gap: 0.5rem !important;
+  align-items: center !important;
+}
+
+.inbenta-knowledge-container .content__buttons__button-wrapper {
+  flex-shrink: 0 !important;
+}
+
+/* Rating buttons */
+.inbenta-knowledge-container .content__buttons .inbenta-km-button {
+  all: unset !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.5rem 1rem !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: calc(var(--radius) - 2px) !important;
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.inbenta-knowledge-container .content__buttons .inbenta-km-button:hover {
+  background: hsl(var(--muted) / 0.3) !important;
+  border-color: hsl(var(--primary) / 0.5) !important;
+  color: hsl(var(--primary)) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.inbenta-knowledge-container .content__buttons .inbenta-km-button:active {
+  transform: translateY(0) !important;
+  background: hsl(var(--primary) / 0.1) !important;
+}
+
+/* Rating button icons */
+.inbenta-knowledge-container .content__buttons .inbenta-km-button__icon {
+  width: 1rem !important;
+  height: 1rem !important;
+  color: inherit !important;
+  flex-shrink: 0 !important;
+}
+
+/* Rating button text */
+.inbenta-knowledge-container .content__buttons .inbenta-km-button__text {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: inherit !important;
+}
+
+/* ====================================================================
+       RATING COMMENT/FEEDBACK STYLING
+   ==================================================================== */
+
+/* Comment section container */
+.inbenta-knowledge-container .inbenta-km__rating__comment {
+  border-top: 1px solid hsl(var(--border)) !important;
+  animation: feedback-slide-down 0.3s ease-out !important;
+  display: block;
+  position: relative;
+}
+
+/* Comment question phrase */
+.inbenta-knowledge-container .comment__phrase {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: hsl(var(--muted-foreground)) !important;
+  margin: 0 0 0.75rem 0 !important;
+  display: block !important;
+}
+
+/* Feedback input container */
+.inbenta-knowledge-container .comment__feedback {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 0.75rem !important;
+  align-items: flex-end !important;
+}
+
+/* Textarea styling */
+.inbenta-knowledge-container .comment__feedback__textarea {
+  all: unset !important;
+  flex: 1 !important;
+  min-height: 60px !important;
+  max-height: 120px !important;
+  padding: 0.75rem 1rem !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  background: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.4 !important;
+  font-family: system-ui, -apple-system, sans-serif !important;
+  resize: vertical !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  box-sizing: border-box !important;
+  display: block !important;
+}
+
+.inbenta-knowledge-container .comment__feedback__textarea:focus {
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2) !important;
+  outline: none !important;
+}
+
+.inbenta-knowledge-container .comment__feedback__textarea::placeholder {
+  color: hsl(var(--muted-foreground)) !important;
+  font-style: normal !important;
+}
+
+/* Send button container */
+.inbenta-knowledge-container .comment__feedback__button,
+.inbenta-knowledge-container
+  .content__buttons__button-wrapper.comment__feedback__button {
+  display: flex !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Send button styling */
+.inbenta-knowledge-container .comment__feedback__button .inbenta-km-button,
+.inbenta-knowledge-container
+  .content__buttons__button-wrapper.comment__feedback__button
+  .inbenta-km-button {
+  all: unset !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.75rem 1.5rem !important;
+  border: 1px solid hsl(var(--primary)) !important;
+  border-radius: var(--radius) !important;
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+  box-shadow: var(--shadow-soft) !important;
+  height: fit-content !important;
+  white-space: nowrap !important;
+}
+
+.inbenta-knowledge-container
+  .comment__feedback__button
+  .inbenta-km-button:hover,
+.inbenta-knowledge-container
+  .content__buttons__button-wrapper.comment__feedback__button
+  .inbenta-km-button:hover {
+  background: hsl(var(--primary) / 0.9) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-medium) !important;
+}
+
+.inbenta-knowledge-container
+  .comment__feedback__button
+  .inbenta-km-button:active,
+.inbenta-knowledge-container
+  .content__buttons__button-wrapper.comment__feedback__button
+  .inbenta-km-button:active {
+  transform: translateY(0) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.inbenta-knowledge-container
+  .comment__feedback__button
+  .inbenta-km-button:disabled,
+.inbenta-knowledge-container
+  .content__buttons__button-wrapper.comment__feedback__button
+  .inbenta-km-button:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  background: hsl(var(--muted)) !important;
+  border-color: hsl(var(--border)) !important;
+  color: hsl(var(--muted-foreground)) !important;
+  transform: none !important;
+}
+
+/* Send button icon */
+.inbenta-knowledge-container
+  .comment__feedback__button
+  .inbenta-km-button__icon,
+.inbenta-knowledge-container
+  .content__buttons__button-wrapper.comment__feedback__button
+  .inbenta-km-button__icon,
+.inbenta-knowledge-container .comment__feedback__button .inbenta-km-icon,
+.inbenta-knowledge-container
+  .content__buttons__button-wrapper.comment__feedback__button
+  .inbenta-km-icon {
+  display: none !important;
+}
+
+/* Send button text */
+.inbenta-knowledge-container
+  .comment__feedback__button
+  .inbenta-km-button__text,
+.inbenta-knowledge-container
+  .content__buttons__button-wrapper.comment__feedback__button
+  .inbenta-km-button__text {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+/* Animation for feedback form */
+@keyframes feedback-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 200px;
+  }
+}
+
+/* ====================================================================
+       FEEDBACK RESPONSIVE DESIGN
+   ==================================================================== */
+
+@media (max-width: 768px) {
+  .inbenta-knowledge-container .comment__feedback__textarea {
+    min-height: 70px !important;
+    padding: 0.625rem 0.875rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .inbenta-knowledge-container .comment__feedback__button .inbenta-km-button {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .inbenta-knowledge-container .comment__phrase {
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .inbenta-knowledge-container .comment__feedback {
+    gap: 0.5rem !important;
+  }
+
+  .inbenta-knowledge-container .comment__feedback__button {
+    justify-content: center !important;
+  }
+
+  .inbenta-knowledge-container .comment__feedback__button .inbenta-km-button {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.75rem !important;
+  }
+}
+
+/* ====================================================================
+       FEEDBACK ACCESSIBILITY
+   ==================================================================== */
+
+.inbenta-knowledge-container
+  .comment__feedback__button
+  .inbenta-km-button:focus {
+  outline: 2px solid hsl(var(--primary-foreground)) !important;
+  outline-offset: 2px !important;
+}
+
+/* High contrast mode for feedback */
+@media (prefers-contrast: high) {
+  .inbenta-knowledge-container .comment__feedback__textarea,
+  .inbenta-knowledge-container .comment__feedback__button .inbenta-km-button {
+    border-width: 2px !important;
+  }
+}
+
+/* Reduced motion for feedback */
+@media (prefers-reduced-motion: reduce) {
+  .inbenta-knowledge-container .inbenta-km__rating__comment {
+    animation: none !important;
+  }
+
+  .inbenta-knowledge-container .comment__feedback__textarea,
+  .inbenta-knowledge-container .comment__feedback__button .inbenta-km-button {
+    transition: none !important;
+  }
+}
+
+/* ====================================================================
+       RESPONSIVE DESIGN FOR RESULTS
+   ==================================================================== */
+
+@media (max-width: 768px) {
+  .inbenta-knowledge-container .inbenta-km__faq__title,
+  .inbenta-knowledge-container .inbenta-km__faq__body {
+    padding: 1rem !important;
+  }
+
+  .inbenta-knowledge-container .content__buttons {
+    justify-content: flex-start !important;
+  }
+
+  .inbenta-knowledge-container .content__buttons .inbenta-km-button {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .inbenta-knowledge-container .title__faq {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+
+  .inbenta-knowledge-container .content__buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .inbenta-knowledge-container .content__buttons .inbenta-km-button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* ====================================================================
+       INSTANTS POPUP/TOOLTIP STYLING
+   ==================================================================== */
+
+/* Main instants popup container */
+.inbenta-knowledge-container .inbenta-km__instants {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-strong) !important;
+  backdrop-filter: blur(12px) !important;
+  z-index: 999 !important;
+  max-width: 320px !important;
+  min-width: 280px !important;
+  overflow: hidden !important;
+  animation: instants-fade-in 0.2s ease-out !important;
+}
+
+/* Instants popup header */
+.inbenta-knowledge-container .inbenta-km__instants__header {
+  background: hsl(var(--muted) / 0.1) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  padding: 0.75rem 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.5rem !important;
+}
+
+/* Header title */
+.inbenta-knowledge-container .header__title {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: hsl(var(--foreground)) !important;
+  margin: 0 !important;
+  flex: 1 !important;
+}
+
+/* Close button */
+.inbenta-knowledge-container .header__icon {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+  cursor: pointer !important;
+  transition: color 0.2s ease, transform 0.1s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: calc(var(--radius) / 2) !important;
+  padding: 0.25rem !important;
+  margin: -0.25rem !important;
+}
+
+.inbenta-knowledge-container .header__icon:hover {
+  color: hsl(var(--foreground)) !important;
+  background: hsl(var(--muted) / 0.2) !important;
+  transform: scale(1.1) !important;
+}
+
+.inbenta-knowledge-container .header__icon:active {
+  transform: scale(0.95) !important;
+}
+
+/* Instants popup content area */
+.inbenta-knowledge-container .inbenta-km__instants .inbenta-km__faqs {
+  padding: 0 !important;
+  gap: 0 !important;
+  max-height: 300px !important;
+  overflow-y: auto !important;
+}
+
+/* Individual FAQ in instants popup */
+.inbenta-knowledge-container .inbenta-km__instants .inbenta-km__faq {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.inbenta-knowledge-container .inbenta-km__instants .inbenta-km__faq:hover {
+  background: hsl(var(--muted) / 0.1) !important;
+  transform: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.inbenta-knowledge-container
+  .inbenta-km__instants
+  .inbenta-km__faq:not(:last-child) {
+  border-bottom: 1px solid hsl(var(--border)) !important;
+}
+
+/* FAQ title in instants popup */
+.inbenta-knowledge-container .inbenta-km__instants .inbenta-km__faq__title {
+  padding: 1rem !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.inbenta-knowledge-container
+  .inbenta-km__instants
+  .inbenta-km__faq__title:hover {
+  background: hsl(var(--muted) / 0.1) !important;
+}
+
+/* FAQ title text in instants popup */
+.inbenta-knowledge-container .inbenta-km__instants .title__faq__text {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: hsl(var(--foreground)) !important;
+  line-height: 1.4 !important;
+}
+
+/* Hide FAQ icon in instants popup for cleaner look */
+.inbenta-knowledge-container .inbenta-km__instants .title__faq__icon {
+  display: none !important;
+}
+
+/* Hide title icon in instants popup */
+.inbenta-knowledge-container .inbenta-km__instants .title__icon {
+  display: none !important;
+}
+
+/* Arrow/pointer for the popup */
+.inbenta-knowledge-container .inbenta-km__instants [x-arrow] {
+  position: absolute !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  transform: rotate(45deg) !important;
+  z-index: -1 !important;
+}
+
+/* Position arrow based on popup placement */
+.inbenta-knowledge-container
+  .inbenta-km__instants[x-placement^="top"]
+  [x-arrow] {
+  bottom: -5px !important;
+  border-top: none !important;
+  border-left: none !important;
+}
+
+.inbenta-knowledge-container
+  .inbenta-km__instants[x-placement^="bottom"]
+  [x-arrow] {
+  top: -5px !important;
+  border-bottom: none !important;
+  border-right: none !important;
+}
+
+.inbenta-knowledge-container
+  .inbenta-km__instants[x-placement^="left"]
+  [x-arrow] {
+  right: -5px !important;
+  border-left: none !important;
+  border-bottom: none !important;
+}
+
+.inbenta-knowledge-container
+  .inbenta-km__instants[x-placement^="right"]
+  [x-arrow] {
+  left: -5px !important;
+  border-right: none !important;
+  border-top: none !important;
+}
+
+/* Animation for instants popup */
+@keyframes instants-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ====================================================================
+       INSTANTS RESPONSIVE DESIGN
+   ==================================================================== */
+
+@media (max-width: 768px) {
+  .inbenta-knowledge-container .inbenta-km__instants {
+    max-width: 280px !important;
+    min-width: 250px !important;
+  }
+
+  .inbenta-knowledge-container .inbenta-km__instants__header {
+    padding: 0.625rem 0.75rem !important;
+  }
+
+  .inbenta-knowledge-container .header__title {
+    font-size: 0.8rem !important;
+  }
+
+  .inbenta-knowledge-container .inbenta-km__instants .inbenta-km__faq__title {
+    padding: 0.75rem !important;
+  }
+
+  .inbenta-knowledge-container .inbenta-km__instants .title__faq__text {
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .inbenta-knowledge-container .inbenta-km__instants {
+    max-width: 260px !important;
+    min-width: 220px !important;
+    margin: 0 0.5rem !important;
+  }
+}
+
+/* ====================================================================
+       ACCESSIBILITY FOR INSTANTS POPUP
+   ==================================================================== */
+
+.inbenta-knowledge-container .inbenta-km__instants:focus-within {
+  outline: 2px solid hsl(var(--primary)) !important;
+  outline-offset: 2px !important;
+}
+
+.inbenta-knowledge-container .header__icon:focus {
+  outline: 2px solid hsl(var(--primary)) !important;
+  outline-offset: 2px !important;
+  background: hsl(var(--muted) / 0.2) !important;
+}
+
+.inbenta-knowledge-container
+  .inbenta-km__instants
+  .inbenta-km__faq__title:focus {
+  outline: 2px solid hsl(var(--primary)) !important;
+  outline-offset: -2px !important;
+  background: hsl(var(--muted) / 0.15) !important;
+}
+
+/* High contrast mode for instants */
+@media (prefers-contrast: high) {
+  .inbenta-knowledge-container .inbenta-km__instants {
+    border-width: 2px !important;
+  }
+  
+  .inbenta-knowledge-container .inbenta-km__instants__header {
+    border-bottom-width: 2px !important;
+  }
+}
+
+/* Reduced motion for instants */
+@media (prefers-reduced-motion: reduce) {
+  .inbenta-knowledge-container .inbenta-km__instants {
+    animation: none !important;
+  }
+
+  .inbenta-knowledge-container .header__icon,
+  .inbenta-knowledge-container .inbenta-km__instants .inbenta-km__faq__title {
+    transition: none !important;
+  }
+}

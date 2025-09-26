@@ -35,7 +35,7 @@ const About = () => {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-                About <span className="text-primary">PharmaSaas</span>
+                About <span className="text-primary">Cliniview</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Leading the future of pharmaceutical innovation with cutting-edge research, 
